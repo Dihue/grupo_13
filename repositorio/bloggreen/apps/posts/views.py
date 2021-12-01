@@ -1,18 +1,21 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
-from .models import Post, PostView, Like, Comment
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .models  import Post,PostView,Like,Comment
 
 class PostListView(ListView):
-    model = Post
+    model=Post
 
 class PostDetailView(DetailView):
-    model = Post
+    model=Post
 
 class PostCreateView(CreateView):
-    model = Post
+    model=Post
 
 class PostUpdateView(UpdateView):
-    model = Post
+    model=Post
 
 class PostDeleteView(DeleteView):
-    model = Post
+    model=Post
+
+
+
