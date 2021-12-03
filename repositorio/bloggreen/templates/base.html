@@ -13,7 +13,7 @@
 
         {% block css %}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'base/css/index.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'base/css/base.css' %}">
         {% endblock %}
         <script src="https://kit.fontawesome.com/ce93252b6d.js" crossorigin="anonymous"></script>
     </head>
@@ -21,57 +21,70 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="templates/index.html">¡Blog Green!</a>
-              <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-          
-              <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                      <li><a class="dropdown-item" href="#">Categoria 1</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 2</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 3</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 4</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 5</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 6</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 7</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 8</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 9</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 10</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 11</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 12</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 13</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 14</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 15</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 16</a></li>
-                      <li><a class="dropdown-item" href="#">Categoria 17</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Ni idea</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Ni idea x2</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Ni idea x3</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Perfil</a>
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-              </div>
-            </div>
-          </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="menu-nav1">
+          <div class="col-5" id="div-menu1">
+              <img src="{% static 'base/img/LogoTemporal.png' %}" id="img-temporal">                   
+          </div>
+          <div class="pt-2 col-3" id="div-menu2">
+            <a class="navbar-brand" href="#" id="titulo-nav">
+              <h2>Blog Green!!</h2>
+            </a>
+          </div>
+          <form class="col-4 d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="menu-nav2">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              
+              {% if user.is_authenticated %}  
+                <li class="ms-1 me-1 nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Hola {{user.username}}</a>
+                </li>
+
+                {% if user.is_superuser %}
+                <li class="ms-2 me-2 nav-item">
+                    <a class="btn btn-outline-light" href="#">Permisos</a>
+                </li>
+                <li class="ms-2 me-2 nav-item">
+                  <a class="btn btn-outline-light" href="#">Crear</a>
+                </li>
+                <li class="ms-2 me-2 nav-item">
+                  <a class="btn btn-outline-light" href="#">Salir</a>
+                </li>
+                {% endif %}
+                
+                {% if user.is_writer %}
+                <li class="ms-2 me-2 nav-item">
+                    <a class="btn btn-outline-light" href="#">Crear</a>
+                </li>
+                <li class="ms-2 me-2 nav-item">
+                    <a class="btn btn-outline-light" href="#">Salir</a>
+                </li>
+                {% endif %}
+
+                {% if user.is_reader %}
+                <li class="ms-2 me-2 nav-item">
+                    <a class="btn btn-outline-light" href="#">Salir</a>
+                </li>
+                {% endif %}
+              
+              {% else %}
+
+                <li class="ms-2 me-2 nav-item">
+                    <a class="btn btn-outline-light" href="#">Registrarse</a>
+                </li>
+                <li class="ms-2 me-2 nav-item">
+                    <a class="btn btn-outline-light" href="#">Ingresar</a>
+                </li>
+              
+              {% endif %}  
+
+            </ul>
+          </div>
+        </nav>
     </header> 
     {% block content %}
   

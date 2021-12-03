@@ -12,3 +12,6 @@ def validar_extension(valor):
 class User(AbstractUser):
     image = models.ImageField(upload_to = 'perfil',
      null=True, blank=True, default=None, validators=[validar_extension])
+    is_superuser = models.BooleanField(default = False)
+    is_writer = models.BooleanField(default = False)
+    is_reader = models.BooleanField(default = True)
