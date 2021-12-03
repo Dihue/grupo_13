@@ -17,7 +17,7 @@ class Post(models.Model):
     thumbnail = models.ImageField(upload_to='post/', null=True, blank=True,validators=[validar_extension])
     publish_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, null=False, blank=False, on_delete=models.CASCADE)
     like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likesPost')
     dislike = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislikesPost')
@@ -33,7 +33,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default= "null", on_delete=models.CASCADE)
     post = models.ForeignKey(Post, null=True, blank=False, on_delete=models.CASCADE, related_name='commentsPost')
     timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
@@ -42,7 +42,7 @@ class Comment(models.Model):
     def __str__(self):
        return self.user
        
-'''class PostView(models.Model):
+class PostView(models.Model):
    #user = models.ForeignKey(User,on_delete=models.CASCADE)
    post = models.ForeignKey(Post, on_delete=models.CASCADE)
    timestamp = models.DateTimeField(auto_now_add=True)
@@ -52,7 +52,6 @@ class Comment(models.Model):
        return self.user.username
 
 
-class Like(models.Model):
+class LikePost(models.Model):
     #user = models.ForeignKey(User,on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-   '''
