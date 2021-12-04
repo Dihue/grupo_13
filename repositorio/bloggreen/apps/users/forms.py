@@ -20,7 +20,6 @@ class RegisterUserForm(UserCreationForm):
             'first_name',
             'last_name',
             'email',
-            'birthdate'
         ]
 
 class EditUserForm(UserChangeForm):
