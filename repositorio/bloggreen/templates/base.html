@@ -26,7 +26,7 @@
               <img src="{% static 'base/img/LogoTemporal.png' %}" id="img-temporal">                   
           </div>
           <div class="pt-2 col-3" id="div-menu2">
-            <a class="navbar-brand" href="#" id="titulo-nav">
+            <a class="navbar-brand" href="{% url 'inicio' %}" id="titulo-nav">
               <h2>Blog Green!!</h2>
             </a>
           </div>
@@ -74,7 +74,7 @@
               {% else %}
 
                 <li class="ms-2 me-2 nav-item">
-                    <a class="btn btn-outline-light" href="#">Registrarse</a>
+                    <a class="btn btn-outline-light" href="registro/">Registrarse</a>
                 </li>
                 <li class="ms-2 me-2 nav-item">
                     <a class="btn btn-outline-light" href="#">Ingresar</a>
