@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls.conf import include
 from . import views
 
 from apps.posts.views import (
@@ -19,7 +20,8 @@ urlpatterns = [
     path('<slug>/', PostDetailView.as_view(), name='detail'),
     path('<slug>/update/', PostUpdateView.as_view(), name='update'),
     path('<slug>/delete/', PostDeleteView.as_view(), name='delete'),
-    path('',views.Inicio, name='inicio')
+    path('',views.Inicio, name='inicio'),
+    path('',include('apps.users.urls'))
     
 ]
 
