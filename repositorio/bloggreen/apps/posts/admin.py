@@ -4,7 +4,6 @@ from .models import Post, Comment, Categoria
 
 admin.site.register(Post)
 admin.site.register(Categoria)
-#admin.site.register(PostView)
 admin.site.register(Comment)
-#admin.site.register(LikePost)
+
 
