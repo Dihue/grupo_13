@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from .forms import RegisterUserForm, EditUserForm
 from .models import User
 
