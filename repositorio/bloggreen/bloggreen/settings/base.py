@@ -12,6 +12,8 @@ SECRET_KEY = 'gv6svt^5w2w)29_j4sf$l*nnmd)+@na!g@$erty0($)!!ir#g+'
 
 AUTH_USER_MODEL = 'users.User'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -24,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'apps.posts',
     'apps.users',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
