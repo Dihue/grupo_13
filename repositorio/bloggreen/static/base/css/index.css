@@ -1,27 +1,82 @@
-#Primer_Lorem{
-    text-align: center;
-    font-size: 25px;
-    margin-top: 20%;
-    
-}
-
 #lista_categorias{
-    padding-top: 3%;
-    padding-right:80%;
+    padding-top: 0%;
 }
 
 #TITULO_ODS{
     background-color:darkgoldenrod;
+    font-size: 20px;
+    font-weight: bold;
+    
 }
 
 button img{
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
 }
 
 #but-ods1{
     background-color: #e5243b;
 }
 
+#but-ods2{
+    background-color: #dda83a;
+}
+
+#but-ods3{
+    background-color: #4c9f38;
+}
+
+#but-ods4{
+    background-color: #c5192d;
+}
+
+#but-ods5{
+    background-color: #ff3a21;
+}
+
+#but-ods6{
+    background-color: #26bde2;
+}
+
+#but-ods7{
+    background-color: #fcc30b;
+}
+
+#but-ods8{
+    background-color: #a21942;
+}
+
+#but-ods9{
+    background-color: #fd6925;
+}
+
+#but-ods10{
+    background-color: #dd1367;
+}
+
+#but-ods11{
+    background-color: #fd9d24;
+}
+
+#but-ods12{
+    background-color: #bf8b2e;
+}
+
+#but-ods13{
+    background-color: #3f7e44;
+}
+#but-ods14{
+    background-color: #0a97d9;
+}
+#but-ods15{
+    background-color: #56c02b;
+}
+#but-ods16{
+    background-color: #00689d;
+}
+
+#but-ods17{
+    background-color: #19486a;
+}
 
 
