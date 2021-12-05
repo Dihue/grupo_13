@@ -30,10 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'apps.posts',
     'apps.users',
     'crispy_forms',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +121,5 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     
 ]
+
+SITE_ID = 1
