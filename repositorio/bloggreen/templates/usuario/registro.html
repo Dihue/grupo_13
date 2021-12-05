@@ -1,22 +1,12 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block content %}
-<br>
-<dir class="container">
-    <dir class="row justify-content-md-center">
-        <dir class="col-lg-8">
-            <h2 class="text-dark">Registro</h2>
-            <form class="text-dark" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form | crispy }}
-                
-                <dir class="float-right"><br>
-                    <input class="btn btn-danger" type="reset" value="Borrar">
-                    <input class="btn btn-success" type="submit" value="Enviar">
-                </dir>
-            </form>
-        </dir>
-    </dir>
-</dir>
+
+<form class="form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" id="submit">Registrarse</button>
+</form>
+
 {% endblock content %}

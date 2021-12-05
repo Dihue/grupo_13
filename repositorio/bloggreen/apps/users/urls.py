@@ -1,9 +1,8 @@
 from django.urls import path
 from . import views
-
-app_name = 'users'
+from django.urls import reverse_lazy
 
 urlpatterns = [
-    path('registro/', views.RegisterUser.as_view(), name='registro')
-    
+    path('registro/', views.RegisterUser.as_view(success_url = reverse_lazy('inicio')), name='registro')
+
 ]
