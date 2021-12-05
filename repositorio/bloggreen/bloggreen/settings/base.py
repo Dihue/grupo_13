@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,7 +12,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gv6svt^5w2w)29_j4sf$l*nnmd)+@na!g@$erty0($)!!ir#g+'
 
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = reverse_lazy('inicio')
+LOGOUT_REDIRECT_URL = reverse_lazy('inicio')
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
+
+LOGIN_URL = reverse_lazy('login')
+
+ALLOWED_IMG = ('.jpg', '.jpeg', '.bmp', '.png')
 # Application definition
 
 INSTALLED_APPS = [
@@ -22,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'apps.posts',
+    'apps.users',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

@@ -10,5 +10,10 @@ def validar_extension(valor):
         raise ValidationError("Este formato de imagen no es valido")
 
 class User(AbstractUser):
+    id = models.AutoField(primary_key=True)
     image = models.ImageField(upload_to = 'perfil',
      null=True, blank=True, default=None, validators=[validar_extension])
+    is_superuser = models.BooleanField(default = False)
+    is_writer = models.BooleanField(default = False)
+    is_reader = models.BooleanField(default = True)
+    birthday = models.DateField(null=True, default=None)
