@@ -9,8 +9,18 @@
     padding-top: 3%;
     padding-right:80%;
 }
+
 #TITULO_ODS{
     background-color:darkgoldenrod;
+}
+
+button img{
+    width: 50%;
+    height: 50%;
+}
+
+#but-ods1{
+    background-color: #e5243b;
 }
 
 
