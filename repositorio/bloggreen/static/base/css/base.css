@@ -1,5 +1,5 @@
 #pie_pagina{
-    margin-top: 100%;
+    margin-top: 0%;
 }
 
 #img-temporal{
@@ -8,3 +8,12 @@
     height: 50px;
 }
 
+#menu-nav1{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(17,17,55,1) 51%, rgba(36,39,40,1) 100%);
+}
+
+#menu-nav2{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(17,17,55,1) 51%, rgba(36,39,40,1) 100%);
+}
