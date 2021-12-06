@@ -23,6 +23,14 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Comment',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('timestamp', models.DateTimeField(auto_now_add=True)),
+                ('content', models.TextField()),
+            ],
+        ),
+        migrations.CreateModel(
             name='Post',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
