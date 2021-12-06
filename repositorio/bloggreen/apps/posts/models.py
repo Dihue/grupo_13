@@ -43,8 +43,4 @@ class Comment(models.Model):
 
 
     def __str__(self):
-<<<<<<< HEAD
        return self.user
-=======
-       return self.user
->>>>>>> f195e17a38abd05cb9845688d904c15e020a9c0d
