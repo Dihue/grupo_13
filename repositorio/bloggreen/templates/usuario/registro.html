@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'base/css/registro.css' %}">
 
-<form class="form" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit" id="submit">Registrarse</button>
-</form>
-
+<div class="container_registro"><br>
+        <div class="row justify-content-md-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bolder" >Registro</h2>
+                <form class="fw-bold" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    {{ form | crispy }}
+                    <br>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <input class="btn btn-danger" type="reset" value="Borrar">
+                        <input class="btn btn-success" type="submit" value="Enviar">
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+</div>
 {% endblock content %}
