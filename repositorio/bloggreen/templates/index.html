@@ -4,68 +4,107 @@
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static 'base/css/index.css' %}">
 {% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="{% static 'base/js/index.js' %}"></script>
+{% endblock %}
 <!-- AGREGO EL TITULO DEL TEMPLATE-->
 
 {% block content %}
     <div class="row g-0">
         <div class="col-2">
-            <div class="list-group"id="lista_categorias">
+            <nav class="list-group" id="lista_categorias">
                 <a class="list-group-item list-group-item-action d-flex justify-content-center" id="TITULO_ODS">
                     17 ODS:
                 </a>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods1">
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods1">Objetivo 1</button>
+                <a class="panel" id="but-ods1">
                     <img src="{% static 'base/img/ODS1.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods2">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods2">Objetivo 2</button>
+                <a class="panel" id="but-ods2">
                     <img src="{% static 'base/img/ODS2.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods3">
+                </a>
+                
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods3">Objetivo 3</button>
+                <a class="panel" id="but-ods3">
                     <img src="{% static 'base/img/ODS3.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods4">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods4">Objetivo 4</button>
+                <a class="panel" id="but-ods4">
                     <img src="{% static 'base/img/ODS4.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods5">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods5">Objetivo 5</button>
+                <a class="panel" id="but-ods5">
                     <img src="{% static 'base/img/ODS5.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods6">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods6">Objetivo 6</button>
+                <a class="panel" id="but-ods6">
                     <img src="{% static 'base/img/ODS6.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods7">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods7">Objetivo 7</button>
+                <a class="panel" id="but-ods7">
                     <img src="{% static 'base/img/ODS7.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods8">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods8">Objetivo 8</button>
+                <a class="panel" id="but-ods8">
                     <img src="{% static 'base/img/ODS8.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods9">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods9">Objetivo 9</button>
+                <a class="panel" id="but-ods9">
                     <img src="{% static 'base/img/ODS9.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods10">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods10">Objetivo 10</button>
+                <a class="panel" id="but-ods10">
                     <img src="{% static 'base/img/ODS10.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods11">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods11">Objetivo 11</button>
+                <a class="panel" id="but-ods11">
                     <img src="{% static 'base/img/ODS11.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods12">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods12">Objetivo 12</button>
+                <a class="panel" id="but-ods12">
                     <img src="{% static 'base/img/ODS12.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods13">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods13">Objetivo 13</button>
+                <a class="panel" id="but-ods13">
                     <img src="{% static 'base/img/ODS13.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods14">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods14">Objetivo 14</button>
+                <a class="panel" id="but-ods14">
                     <img src="{% static 'base/img/ODS14.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods15">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods15">Objetivo 15</button>
+                <a class="panel" id="but-ods15">
                     <img src="{% static 'base/img/ODS15.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods16">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods16">Objetivo 16</button>
+                <a class="panel" id="but-ods16">
                     <img src="{% static 'base/img/ODS16.png' %}" alt="">
-                </button>
-                <button type="button" class="list-group-item list-group-item-action d-flex justify-content-center" id="but-ods17">
+                </a>
+
+                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods17">Objetivo 17</button>
+                <a class="panel" id="but-ods17">
                     <img src="{% static 'base/img/ODS17.png' %}" alt="">
-                </button>
-            </div>   
-        </div>  
+                </a>
+            </nav>  
+        </div>
+          
         <div class="col-6 ms-5 ps-5" id= "blog_ciudad">
             <div class="" id="blog_ciudad">
                 <div class="card">
