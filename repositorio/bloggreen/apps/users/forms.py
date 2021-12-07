@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordResetForm
 from django.forms import fields
-from .models import User
+from .models import NewUser
 from django import forms
 from django.contrib.auth.models import User
 
@@ -12,7 +12,7 @@ class RegisterUserForm(UserCreationForm):
     birthdate = forms.DateField()
 
     class Meta:
-        model = User
+        model = NewUser
         fields = [
             'username',
             'password1',
@@ -23,7 +23,7 @@ class RegisterUserForm(UserCreationForm):
         ]
 
 class EditUserForm(UserChangeForm):
-    model = User
+    model = NewUser
     fields = [
         'image',
         'password1',
