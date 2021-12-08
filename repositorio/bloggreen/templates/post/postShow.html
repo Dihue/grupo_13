@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'post/css/postShow.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container" style="background: #FFF000">
+    <div class="row" style="background: #FF0000">
+        <div class="container mb-3 mt-3 d-flex justify-content-end" style="background: #FFFFFF">
+            <p><b>Post creado por {{ object.user.username }} - {{ object.publish_date }}</b></p>
+        </div>
+        <div class="container mb-4 d-flex justify-content-end">
+            {% if user.id == post.user.id %}
+                <form method="post" action="{% url 'deletePost' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" value="Comfirm" class="btn btn-sm">
+                        <b>ELIMINAR</b>
+                    </button>
+                    <a href="{% url 'editarPost' post.id %}" class="btn btn-sm">
+                        <b>Editar</b>
+                    </a>
+                </form>
+            {% elif user.is_superuser %}
+                <form method="post" action="{% url 'deletePost' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" value="Comfirm" class="btn btn-outline-danger btn-sm">
+                        <b>ELIMINAR</b>
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+        <div class="container d-flex mt-3 mb-3 justify-content-center">
+            <h2 class="card-header" style="color: #FFFFFF">{{ object.title }}</h2>
+        </div>
+        <div class="container mb-5" id="post_contenido">
+            <div class="mt-1 mb-2">
+                <p>{{ object.content|safe }}</p>
+            </div>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'likesPost' post.id %}">
+                    {% csrf_token %}
+                    {% if liked %}
+                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">Ya no me gusta</button>
+                    {% else %}
+                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">Me gusta</button>                        
+                    {% endif %}
+                    <br>
+                    <b>{{ total_likes }} LIKES</b>
+                </form>
+                <form method="post" action="{% url 'dislikesPost' post.id %}">
+                    {% csrf_token %}
+                    {% if disliked %}
+                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">No me gusta</button>
+                    {% else %}
+                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">No me gusta</button>                        
+                    {% endif %}
+                    <br>
+                    <b>{{ total_dislikes }} DISLIKES</b>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
