@@ -12,13 +12,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gv6svt^5w2w)29_j4sf$l*nnmd)+@na!g@$erty0($)!!ir#g+'
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.NewUser'
+
 LOGIN_REDIRECT_URL = reverse_lazy('inicio')
 LOGOUT_REDIRECT_URL = reverse_lazy('inicio')
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 
 LOGIN_URL = reverse_lazy('login')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ALLOWED_IMG = ('.jpg', '.jpeg', '.bmp', '.png')
 # Application definition

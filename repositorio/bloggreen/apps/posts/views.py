@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import render
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404
 from .models  import Post, Comment
 
@@ -21,6 +23,3 @@ class PostUpdateView(UpdateView):
 
 class PostDeleteView(DeleteView):
     model=Post
-
-
-
