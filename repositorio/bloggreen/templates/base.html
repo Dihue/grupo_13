@@ -41,7 +41,7 @@
               
               {% if user.is_authenticated %}  
                 <li class="ms-1 me-1 nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Hola {{user.username | upper }}</a>
+                    <a class="nav-link active" aria-current="page" href="#">Hola {{user.username | upper }}</a>
                 </li>
 
                 {% if user.is_superuser %}
@@ -74,7 +74,7 @@
                     <a class="btn btn-outline-light" href="{% url 'users:registro' %}">Registrarse</a>
                 </li>
                 <li class="ms-2 me-2 nav-item">
-                    <a class="btn btn-outline-light" href="login/">Ingresar</a>
+                    <a class="btn btn-outline-light" href="login">Ingresar</a>
                 </li>
               
               {% endif %}  
