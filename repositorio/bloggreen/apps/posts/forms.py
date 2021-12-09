@@ -6,15 +6,15 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
 
-        field = [
-            'titulo',
-            'contenido',
-            'portada',
-            'categoria'
+        fields = [
+            'title',
+            'content',
+            'thumbnail',
+            'categoria',
         ]
 
         labels = {
-            'titulo': 'Ingrese el titulo'
+            'title': 'Ingrese el titulo'
         }
 
 class ComentForm(forms.ModelForm):
@@ -23,5 +23,5 @@ class ComentForm(forms.ModelForm):
 		model = Comment
 
 		fields = [
-			'contenido',
+			'content',
 		]

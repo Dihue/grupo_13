@@ -1,0 +1,44 @@
+#post_contenido{
+    height: auto;
+    width: 900px;
+    background-color: #303535;
+    color: #FFFFFF;
+    border: solid 2px #FFFFFF;
+    border-radius: 5px;
+}
+
+.btn-unlike{
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    background-color: #AB1807;
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: background-color .15s ease-in-out;
+  }
+
+.btn-unlike:hover, .btn-unlike:focus {
+    background-color: #FFFFFF;
+    color: #000000
+}
+  
+.btn-unlike:active {
+    background-color: #AB1807;
+}
+
+.btn-like{
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    background-color: #EF891E;
+    color: #000000;
+    font-weight: bold;
+    transition: background-color .15s ease-in-out;
+}
+  
+.btn-like:hover, .btn-like:focus {
+    background-color: #FFFFFF;
+    color: #000000
+}
+  
+.btn-like:active {
+    background-color: #2CA48E;
+}

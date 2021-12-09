@@ -108,12 +108,37 @@
         <div class="col-6 ms-5 ps-5" id= "blog_ciudad">
             <div class="" id="blog_ciudad">
                 <div class="card">
-                    <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Blog: Acción Por el clima</h5>
-                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consectetur dolore fugit porro asperiores magnam magni vero similique nostrum tenetur dolorem recusandae sint, sit perferendis a. Quaerat mollitia corrupti earum!</p>
-                      <a href="#" class="btn btn-primary">Ir al post</a>
-                    </div>
+                    {% if latest %}
+                        {% for post in latest %}
+                            <div>
+                                {% if post.thumbnail %}
+                                    <img src="{{ p.thumbnail.url }}" class="card-img-top" alt="...">
+                                {% else %}
+                                    <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consectetur dolore fugit porro asperiores magnam magni vero similique nostrum tenetur dolorem recusandae sint, sit perferendis a. Quaerat mollitia corrupti earum!</p>
+                                <a href="#" class="btn btn-primary">Ir al post</a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% for post in posts %}
+                            <div>
+                                {% if post.thumbnail %}
+                                    <img src="{{ p.portada.url }}" class="card-img-top" alt="...">
+                                {% else %}
+                                    <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consectetur dolore fugit porro asperiores magnam magni vero similique nostrum tenetur dolorem recusandae sint, sit perferendis a. Quaerat mollitia corrupti earum!</p>
+                                <a href="#" class="btn btn-primary">Ir al post</a>
+                            </div>
+                    {% endfor %}
+                    
                 </div>
             </div>
         </div>

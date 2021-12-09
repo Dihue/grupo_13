@@ -26,12 +26,12 @@ class Post(models.Model):
     dislike = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislikesPost')
 
     def __str__(self):
-        return self.title
+        return '%s - %s - %s' % (self.title, self.categoria, self.user)
 
     def total_likes(self):
         return self.like.count()
     
-    def total_dislike(self):
+    def total_dislikes(self):
         return self.dislike.count()
 
 
@@ -44,4 +44,4 @@ class Comment(models.Model):
 
 
     def __str__(self):
-       return self.user
+       return '%s - %s' % (self.post.title, self.user)

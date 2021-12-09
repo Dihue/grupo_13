@@ -13,7 +13,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gv6svt^5w2w)29_j4sf$l*nnmd)+@na!g@$erty0($)!!ir#g+'
 
 AUTH_USER_MODEL = 'users.NewUser'
-
 LOGIN_REDIRECT_URL = reverse_lazy('inicio')
 LOGOUT_REDIRECT_URL = reverse_lazy('inicio')
 
