@@ -17,7 +17,7 @@ class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     content = models.TextField()
-    thumbnail = models.ImageField(upload_to='post/', null=True, blank=True, validators=[validar_extension])
+    portada = models.ImageField(upload_to='post/', null=True, blank=True, validators=[validar_extension])
     publish_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, default=1, on_delete=models.CASCADE)
@@ -26,7 +26,7 @@ class Post(models.Model):
     dislike = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislikesPost')
 
     def __str__(self):
-        return '%s - %s - %s' % (self.title, self.categoria, self.user)
+        return '%s - %s - %s - %s' % (self.title, self.categoria, self.user, self.portada)
 
     def total_likes(self):
         return self.like.count()

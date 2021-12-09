@@ -54,9 +54,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def formValid(self, form):
         form.instance.usuario = self.request.user
 
-        if form.instance.thumbnail.name:
+        if form.instance.portada.name:
             ext = form.instance.portada.name.split(".")[-1]
-            form.instance.thumbnail.name = form.instance.title + '.' + ext
+            form.instance.portada.name = form.instance.title + '.' + ext
 
         return super().formValid(form)
 
@@ -75,9 +75,9 @@ class PostEditView(LoginRequiredMixin, UpdateView):
     def formValid(self, form):
         form.instance.usuario = self.request.user
 
-        if form.instance.thumbnail.name:
+        if form.instance.portada.name:
             ext = form.instance.portada.name.split(".")[-1]
-            form.instance.thumbnail.name = form.instance.title + '.' + ext
+            form.instance.portada.name = form.instance.title + '.' + ext
 
         return super().formValid(form)
 
@@ -85,8 +85,8 @@ class PostListView(ListView):
     model = Post
     paginate_by = 5
     ordering = ['-publish_date']
-    #template_name = 'post/postList.html'
-    template_name = 'index.html'
+    template_name = 'post/postList.html'
+    #template_name = 'index.html'
     context_object_name = 'posts'
 
     def latestPost(request):
