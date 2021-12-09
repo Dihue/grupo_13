@@ -2,6 +2,7 @@ from django import urls
 from django.urls import path
 from apps.posts.views import *
 
+app_name = "posts"
 
 urlpatterns = [
     path('post/crear', PostCreateView.as_view(), name='crearPost'),

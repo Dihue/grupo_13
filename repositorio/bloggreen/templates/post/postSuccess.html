@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'post/css/postSuccess.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<p>Post creado satisfactoriamente!!</p>
+
+{% endblock %}
