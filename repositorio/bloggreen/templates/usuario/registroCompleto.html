@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block css %}
-
-
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'usuario/css/registroCompleto.css' %}">
 {% endblock %}
 
-{% block contenido %}
-<div class="" style="background-color: #303535">
-    <h2>Registro realizado satisfactoriamente. ¡Bienvenido a BlogGreen!</h2>
+{% block content %}
+<div class= "container d-flex justify-content-center ms-5 me-5 mt-5 mb-5">
+    <div class="ps-4 pe-4 pb-5 pt-5" id="cuadro_Registro">
+        <h2>Registro realizado satisfactoriamente.</h2>
+        <h2><bold>¡Bienvenido a BlogGreen!</bold></h2>
+        <div class="pt-5 pb-3">
+            <a class="btn btn-outline-light ps-5 pe-5" href="{% url 'inicio' %}">Inicio</a>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
