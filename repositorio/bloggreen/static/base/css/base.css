@@ -1,5 +1,6 @@
 #pie_pagina{
-    margin-top: 0%;
+    flex-shrink: none;
+	margin-top: 100px; 
 }
 
 #img-temporal{
@@ -16,4 +17,11 @@
 #menu-nav2{
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(17,17,55,1) 51%, rgba(36,39,40,1) 100%);
+}
+
+#bienvenida{
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
 }

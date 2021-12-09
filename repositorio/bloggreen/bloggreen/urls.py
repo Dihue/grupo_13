@@ -8,9 +8,10 @@ from . import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('',views.Inicio, name='inicio'),
     path('',include('apps.users.urls')),
+    path('',include('apps.posts.urls')),
     
     
 ]
