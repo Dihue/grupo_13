@@ -111,8 +111,8 @@
                     {% if latest %}
                         {% for post in latest %}
                             <div>
-                                {% if post.thumbnail %}
-                                    <img src="{{ p.thumbnail.url }}" class="card-img-top" alt="...">
+                                {% if post.portada %}
+                                    <img src="{{ p.portada.url }}" class="card-img-top" alt="...">
                                 {% else %}
                                     <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
                                 {% endif %}
@@ -126,7 +126,7 @@
                     {% endif %}
                     {% for post in posts %}
                             <div>
-                                {% if post.thumbnail %}
+                                {% if post.portada %}
                                     <img src="{{ p.portada.url }}" class="card-img-top" alt="...">
                                 {% else %}
                                     <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
