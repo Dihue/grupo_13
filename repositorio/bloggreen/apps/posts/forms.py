@@ -10,6 +10,7 @@ class PostForm(forms.ModelForm):
             'title',
             'content',
             'portada',
+            'categoria',
         ]
 
         labels = {
