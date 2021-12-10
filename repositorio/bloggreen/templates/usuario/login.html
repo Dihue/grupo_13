@@ -8,16 +8,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="container_login">
+<div class="container_login"><br>
     <div class="row justify-content-md-center">
-        <div class="col-lg-6">
-            <h2 class="fw-bolder" >Login</h2>
-            <form class="form" method="post">{% csrf_token %}
+        <div id="marco" class="col-lg-6">
+            <h2 class="fw-bolder" >Login</h2><br>
+            <form class="fw-bold" method="post">{% csrf_token %}
                 
             {{ form.as_p }}
                     
-                <button type="submit" id="submit">Ingresar</button>
-            </form>
+                <button class="btn btn-success" type="submit" id="submit">Ingresar</button>
+            </form><br>
         </div>
     </div>
 </div>

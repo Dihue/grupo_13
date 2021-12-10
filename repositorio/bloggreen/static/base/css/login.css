@@ -6,4 +6,10 @@
  body {
     min-height: calc(100vh - 100px - 330px);
     height: 100px;
- }
+}
+
+#marco {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: radial-gradient(rgb(26, 128, 40) 10%,lightgreen 70%);
+}
