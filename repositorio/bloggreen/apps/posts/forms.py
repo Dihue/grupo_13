@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
         fields = [
             'title',
             'content',
-            'portada',
+            'thumbnail',
             'categoria',
         ]
 
