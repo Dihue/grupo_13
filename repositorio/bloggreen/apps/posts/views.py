@@ -13,13 +13,14 @@ from .models  import Post, Comment
 def like_view(request, pk):
     post = get_object_or_404(Post, id = request.POST.get('post_id'))
     liked = False
+    print(post.like.filter(id = request.user.id).exists())
 
     if post.like.filter(id = request.user.id).exists():
         post.like.remove(request.user)
-        post.dislike.remove(request.user)
         liked = False
     else:
         post.like.add(request.user)
+        post.dislike.remove(request.user)
         liked = True
 
     return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(pk)]))
@@ -30,14 +31,13 @@ def dislike_view(request, pk):
 
     if post.dislike.filter(id = request.user.id).exists():
         post.dislike.remove(request.user)
-        post.like.remove(request.user)
         disliked = False
     else:
         post.dislike.add(request.user)
+        post.like.remove(request.user)
         disliked = True
 
     return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(pk)]))
-
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post

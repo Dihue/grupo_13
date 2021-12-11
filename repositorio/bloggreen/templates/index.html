@@ -109,7 +109,7 @@
             <div class="pt-5 pe-5" id="blog_ciudad">
                 <div class="card">
                 {% if post %}
-                    <div>
+                    <div class="">
                         {% if post.thumbnail.url %}
                             <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="...">
                         {% else %}
@@ -117,17 +117,19 @@
                         {% endif %}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.content }}</p>
-                        <a href="#" class="btn btn-primary">Ir al post</a>
+                        <h4 class="card-title">{{ post.title }}</h4>
+                        <p class="card-text mt-3">{{ post.content }}</p>
+                    </div>
+                    <div class="card-body mt-2">
+                        <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>
                     </div>
                 {% else %}
                     <div>
                         <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Titulo de ejemplo</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint fugiat, excepturi, officiis ea animi inventore tempora similique veritatis sapiente eum sequi, ad exercitationem quis dicta. Ex accusantium architecto quisquam totam.</p>
+                        <h3 class="card-title">Titulo de ejemplo</h3>
+                        <p class="card-text mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint fugiat, excepturi, officiis ea animi inventore tempora similique veritatis sapiente eum sequi, ad exercitationem quis dicta. Ex accusantium architecto quisquam totam.</p>
                     </div>
                 {% endif %}
                 </div>

@@ -44,23 +44,15 @@
             {% if user.is_authenticated %}
                 <form method="post" action="{% url 'posts:likesPost' post.id %}">
                     {% csrf_token %}
-                    {% if object.like %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm ">Ya no me gusta</button>
-                    {% else %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">Me gusta</button>                        
-                    {% endif %}
+                    <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm ">Me gusta</button>
                     <br>
-                    <b>{{ total_likes }} LIKES</b>
+                    <b>{{ object.total_likes }} LIKES</b>
                 </form>
                 <form method="post" action="{% url 'posts:dislikesPost' post.id %}">
                     {% csrf_token %}
-                    {% if disliked %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">No me gusta</button>
-                    {% else %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">No me gusta</button>                        
-                    {% endif %}
+                    <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">No me gusta</button>
                     <br>
-                    <b>{{ total_dislikes }} DISLIKES</b>
+                    <b>{{ object.total_dislikes }} DISLIKES</b>
                 </form>
             {% endif %}
         </div>
