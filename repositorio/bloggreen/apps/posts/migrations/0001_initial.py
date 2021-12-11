@@ -28,6 +28,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=100)),
                 ('thumbnail', models.ImageField(blank=True, null=True, upload_to='post/', validators=[apps.posts.models.validar_extension])),
+<<<<<<< HEAD
                 ('publish_date', models.DateTimeField(auto_now=True)),
                 ('last_updated', models.DateTimeField(auto_now_add=True)),
                 ('content', models.TextField()),
@@ -35,16 +36,31 @@ class Migration(migrations.Migration):
                 ('dislike', models.ManyToManyField(related_name='dislikesPost', to=settings.AUTH_USER_MODEL)),
                 ('like', models.ManyToManyField(related_name='likesPost', to=settings.AUTH_USER_MODEL)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+=======
+                ('publish_date', models.DateTimeField(auto_now_add=True)),
+                ('last_updated', models.DateTimeField(auto_now=True)),
+                ('categoria', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='posts.Categoria')),
+                ('dislike', models.ManyToManyField(related_name='dislikesPost', to=settings.AUTH_USER_MODEL)),
+                ('like', models.ManyToManyField(related_name='likesPost', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+>>>>>>> 6e38fb9346cfd0abf6551e25147b077eaff7688d
             ],
         ),
         migrations.CreateModel(
             name='Comment',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
+<<<<<<< HEAD
                 ('timestamp', models.DateTimeField(auto_now=True)),
                 ('content', models.TextField()),
                 ('post', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='commentsPost', to='posts.Post')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+=======
+                ('timestamp', models.DateTimeField(auto_now_add=True)),
+                ('content', models.TextField()),
+                ('post', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='commentsPost', to='posts.Post')),
+                ('user', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+>>>>>>> 6e38fb9346cfd0abf6551e25147b077eaff7688d
             ],
         ),
     ]
