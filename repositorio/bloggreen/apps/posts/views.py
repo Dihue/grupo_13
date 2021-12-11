@@ -1,12 +1,12 @@
+from django import template
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls.base import reverse_lazy
 from django.conf import settings
-from django.utils import timezone
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.template import RequestContext
 from apps.posts.forms import PostForm, CommentForm
 from .models  import Post, Comment
 
@@ -82,11 +82,6 @@ class PostListView(ListView):
     ordering = ['-publish_date']
     #template_name = 'post/postList.html'
     template_name = 'index.html'
-    context_object_name = 'posts'
-
-    def latest_post(request):
-        latest = Post.objects.filter(publish_date = timezone.now()).reverse()[:1]
-        return render(request, 'index.html', {'latest' : latest})
 
 class PostShowView(DetailView):
     model = Post
@@ -131,29 +126,5 @@ class PostCommentView(LoginRequiredMixin, CreateView):
         new.save()
 
         return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
-
-'''
-def like_view(request, pk):
-    post = get_object_or_404(Post, id= request.POST.get('post_id'))
-    liked = False
-class PostListView(ListView):
-    model=Post
-
-def postListIndex(request):
-    posts = Post.objects.order_by('-publish_date')
-    return render(request, 'index.html', {'post':posts})
-
-class PostDetailView(DetailView):
-    model=Post
-
-class PostCreateView(CreateView):
-    model=Post
-
-class PostUpdateView(UpdateView):
-    model=Post
-
-class PostDeleteView(DeleteView):
-    model=Post
-'''
 
 

@@ -44,8 +44,8 @@
             {% if user.is_authenticated %}
                 <form method="post" action="{% url 'posts:likesPost' post.id %}">
                     {% csrf_token %}
-                    {% if liked %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">Ya no me gusta</button>
+                    {% if object.like %}
+                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm ">Ya no me gusta</button>
                     {% else %}
                         <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">Me gusta</button>                        
                     {% endif %}
