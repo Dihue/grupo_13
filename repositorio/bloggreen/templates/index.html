@@ -13,8 +13,8 @@
 
 {% block content %}
     <div class="row g-0">
-        <div class="col-2">
-            <nav class="list-group" id="lista_categorias">
+        <div class="col-3 pe-5">
+            <nav class="list-group pe-5" id="lista_categorias">
                 <a class="list-group-item list-group-item-action d-flex justify-content-center" id="TITULO_ODS">
                     17 ODS:
                 </a>
@@ -105,41 +105,38 @@
             </nav>  
         </div>
           
-        <div class="col-6 ms-5 ps-5" id= "blog_ciudad">
-            <div class="" id="blog_ciudad">
+        <div class="col-7 pe-5 pt-5" id= "blog_ciudad">
+            <div class="pt-5 pe-5" id="blog_ciudad">
                 <div class="card">
-                    {% if latest %}
-                        {% for post in latest %}
-                            <div>
-                                {% if post.portada %}
-                                    <img src="{{ p.portada.url }}" class="card-img-top" alt="...">
-                                {% else %}
-                                    <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
-                                {% endif %}
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consectetur dolore fugit porro asperiores magnam magni vero similique nostrum tenetur dolorem recusandae sint, sit perferendis a. Quaerat mollitia corrupti earum!</p>
-                                <a href="#" class="btn btn-primary">Ir al post</a>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    {% for post in posts %}
-                            <div>
-                                {% if post.portada %}
-                                    <img src="{{ p.portada.url }}" class="card-img-top" alt="...">
-                                {% else %}
-                                    <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
-                                {% endif %}
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consectetur dolore fugit porro asperiores magnam magni vero similique nostrum tenetur dolorem recusandae sint, sit perferendis a. Quaerat mollitia corrupti earum!</p>
-                                <a href="#" class="btn btn-primary">Ir al post</a>
-                            </div>
-                    {% endfor %}
-                    
+                {% if post %}
+                    <div>
+                        {% if post.thumbnail.url %}
+                            <img src="{{ post.thumbnail.url }}" class="card-img-top" alt="...">
+                        {% else %}
+                            <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content }}</p>
+                        <a href="#" class="btn btn-primary">Ir al post</a>
+                    </div>
+                {% else %}
+                    <div>
+                        <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Titulo de ejemplo</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint fugiat, excepturi, officiis ea animi inventore tempora similique veritatis sapiente eum sequi, ad exercitationem quis dicta. Ex accusantium architecto quisquam totam.</p>
+                    </div>
+                {% endif %}
                 </div>
+            </div>
+        </div>
+
+        <div class="col-2" style="background: blueviolet;">
+            <div class="">
+                <h1>Publicidad</h1>
             </div>
         </div>
     </div>

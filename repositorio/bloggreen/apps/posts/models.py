@@ -16,14 +16,15 @@ class Categoria(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    content = models.TextField()
     thumbnail = models.ImageField(upload_to='post/', null=True, blank=True, validators=[validar_extension])
-    publish_date = models.DateTimeField(auto_now_add=True)
-    last_updated = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, default=1, on_delete=models.CASCADE)
-    categoria = models.ForeignKey(Categoria, null=False, blank=False, default=1, on_delete=models.CASCADE)
+    publish_date = models.DateTimeField(auto_now=True)
+    last_updated = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
     like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likesPost')
     dislike = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislikesPost')
+
+    categoria = models.ForeignKey(Categoria, null=False, blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s - %s - %s' % (self.title, self.categoria, self.user)
@@ -37,11 +38,11 @@ class Post(models.Model):
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, default=1, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, null=True, blank=False, on_delete=models.CASCADE, related_name='commentsPost')
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now=True)
     content = models.TextField()
 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, blank=False, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, null=True, blank=False, on_delete=models.CASCADE, related_name='commentsPost')
 
     def __str__(self):
        return '%s - %s' % (self.post.title, self.user)
