@@ -17,7 +17,7 @@ class PostForm(forms.ModelForm):
             'title': 'Ingrese el titulo'
         }
 
-class ComentForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
 
 	class Meta:
 		model = Comment
