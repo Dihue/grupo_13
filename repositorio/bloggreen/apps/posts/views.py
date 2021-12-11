@@ -80,19 +80,9 @@ class PostListView(ListView):
     model = Post
     paginate_by = 5
     ordering = ['-publish_date']
-<<<<<<< HEAD
     template_name = 'post/postList.html'
     #template_name = 'index.html'
     context_object_name = 'posts'
-
-    def latestPost(request):
-        latest = Post.objects.filter(publish_date = timezone.now()).reverse()[:1]
-        return render(request, 'index.html', {'latest' : latest})
-=======
-    #template_name = 'post/postList.html'
-    template_name = 'index.html'
->>>>>>> b0951fbb1c11b0f087dc3869987988a7a89d7f9b
-
 class PostShowView(DetailView):
     model = Post
     template_name = 'post/postShow.html'
