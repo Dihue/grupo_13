@@ -105,9 +105,9 @@
             </nav>  
         </div>
           
-        <div class="col-7 pe-5 pt-5" id= "blog_ciudad">
+        <div class="col-7 pe-5 pt-4" id= "blog_ciudad">
             <div class="pt-5 pe-5" id="blog_ciudad">
-                <div class="card">
+                <div class="card" style="background-color: #303535; color: #FFFFFF;">
                 {% if post %}
                     <div class="">
                         {% if post.thumbnail.url %}
@@ -116,20 +116,20 @@
                             <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
                         {% endif %}
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #303535; color: #FFFFFF;">
                         <h4 class="card-title">{{ post.title }}</h4>
                         <p class="card-text mt-3">{{ post.content }}</p>
                     </div>
-                    <div class="card-body mt-2">
+                    <div class="card-body mt-2" style="background-color: #303535; color: #FFFFFF;">
                         <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>
                     </div>
                 {% else %}
-                    <div>
+                    <div class="card-body mt-2" style="background-color: #303535; color: #FFFFFF;">
                         <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" alt="...">
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #303535; color: #FFFFFF;">
                         <h3 class="card-title">Titulo de ejemplo</h3>
-                        <p class="card-text mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint fugiat, excepturi, officiis ea animi inventore tempora similique veritatis sapiente eum sequi, ad exercitationem quis dicta. Ex accusantium architecto quisquam totam.</p>
+                        <p class="card-text mt-2" style="background-color: #303535; color: #FFFFFF;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint fugiat, excepturi, officiis ea animi inventore tempora similique veritatis sapiente eum sequi, ad exercitationem quis dicta. Ex accusantium architecto quisquam totam.</p>
                     </div>
                 {% endif %}
                 </div>
@@ -141,15 +141,5 @@
                 <h1>Publicidad</h1>
             </div>
         </div>
-    </div>
-           
-            
-            
-            
-       </div>
-    
-    </div>
-        
-    
-    
+    </div>      
 {% endblock content %}
