@@ -8,3 +8,8 @@ def Inicio(request):
 
 def Login(request):
     return render(request,'usuarios/login.html')
+
+def Perfil(request):
+    args = {'user': request.user}
+    print(args)
+    return render(request, 'usuario/perfil.html', args)

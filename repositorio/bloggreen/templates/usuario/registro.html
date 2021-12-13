@@ -3,12 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'base/css/registro.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'usuario/css/registro.css' %}">
 
-<div class="container_registro"><br>
-        <div class="row justify-content-md-center">
+<div class="container d-flex justify-content-center"><br>
+        <div class="row d-inline-flex justify-content-center pt-3 ms-5 me-5 mb-5 mt-5" id="container_registro">
             <div class="col-lg-6">
-                <h2 class="fw-bolder" >Registro</h2>
+                <h2 class="fw-bolder d-flex justify-content-center" >Registro</h2>
                 <form class="fw-bold" method="POST" enctype="multipart/form-data">{% csrf_token %}
                     {{ form | crispy }}
                     <br>
