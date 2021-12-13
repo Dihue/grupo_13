@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!-- AGREGO EL TITULO DEL TEMPLATE-->
-{% block titulo %}
-
-{% endblock %}
-
-<!--DE ESTA FORMA AGREGO EL PERFIL.CSS AL BLOQUE DE LA BASE/ BLOCK.SUPER SE USA PARA OBTENER EL CONTENIDO DEL BLOQUE PADRE -->
 {% block css %}
 	{{ block.super }}
 	<link rel="stylesheet" type="text/css" href="{% static 'usuario/css/perfil.css' %}">

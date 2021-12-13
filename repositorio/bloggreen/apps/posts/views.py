@@ -8,7 +8,8 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.template import RequestContext
 from apps.posts.forms import PostForm, CommentForm
-from .models  import Post, Comment
+from .models  import Categoria, Post, Comment
+from apps.users.models import NewUser
 
 def like_view(request, pk):
     post = get_object_or_404(Post, id = request.POST.get('post_id'))
@@ -113,6 +114,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
+#--------------------------------COMENTARIO------------------------------------------------------
 class PostCommentView(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
@@ -127,5 +129,22 @@ class PostCommentView(LoginRequiredMixin, CreateView):
         new.save()
 
         return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
+
+#-------------------------------BUSCADOR----------------------------------------------------------
+
+def search(request):
+    return render(request, 'buscador.html')
+
+def postSearchView(request):
+    queryset = request.GET.get("buscar")
+    categoria_id = request.GET.get('filtro', None)
+
+    resultados = {}
+    categorias = Categoria.objects.all()
+    resultados['categorias'] = categorias
+
+    if queryset:
+        user = NewUser.objects.filter(username_icontains = queryset)
+        resultados['posts'] = Post.objects.filter()
 
 
