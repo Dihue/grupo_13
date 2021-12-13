@@ -26,5 +26,5 @@ class EditUserForm(UserChangeForm):
         'first_name',
         'last_name',
         'email',
-        'birthdate'
+        'birthday'
     ]
