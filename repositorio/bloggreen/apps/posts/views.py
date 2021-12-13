@@ -58,21 +58,21 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostEditView(LoginRequiredMixin, UpdateView):
     model = Post
     fields = [
-        'titulo',
-        'contenido',
-        'portada',
+        'title',
+        'content',
+        'thumbnail',
         'categoria'
     ]
     template_name = 'post/postEdit.html'
-    success_url = reverse_lazy('mostrarPost')
+    success_url = reverse_lazy('inicio')
     login_url = settings.LOGIN_URL
 
     def form_valid(self, form):
-        form.instance.usuario = self.request.user
+        form.instance.user = self.request.user
 
-        if form.instance.portada.name:
-            ext = form.instance.portada.name.split(".")[-1]
-            form.instance.portada.name = form.instance.title + '.' + ext
+        if form.instance.thumbnail.name:
+            ext = form.instance.thumbnail.name.split(".")[-1]
+            form.instance.thumbnail.name = form.instance.title + '.' + ext
 
         return super().form_valid(form)
 

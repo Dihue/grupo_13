@@ -13,14 +13,13 @@
 {% endblock %}
 
 
-{% block contenido %}
+{% block content %}
 
 	<div class="container cuerpo mt-5 mb-5 text-white shadow-lg p-3 rounded"> 
 		<div class="container perfil d-flex justify-content-center text-white ">
 			<h2 class="titulo mt-3 mb-4">PERFIL DE USUARIO</h2>
 		</div>
 		<div class="container descripcion text-white">
-			<p> {{ object.user.username }}</p>
             {% if user.image %}
 				<img src="{{ user.image.url }}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
 			{% else %}
@@ -34,7 +33,7 @@
 		</div>
 		
 		<div class="botonmodificar mt-5">
-			<a href="{% url 'usuario:editar' %}" class="btn btn-boton_personalizado mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL</a>            
+			<a href="" class="btn btn-boton_personalizado mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL</a>            
 		</div>
 	</div>
 	
