@@ -114,8 +114,22 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
-#--------------------------------COMENTARIO------------------------------------------------------
-class PostCommentView(LoginRequiredMixin, CreateView):
+class PostCommentView(LoginRequiredMixin, DetailView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'post/postComment.html'
+    success_url = reverse_lazy('inicio')
+    login_url = settings.LOGIN_URL
+
+    def form_valid(self, form):
+        new = form.save(commit = False)
+        new.post_id = self.kwargs['pk']
+        new.user = self.request.user
+        new.save()
+
+        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
+
+class PostComment(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'post/postCommentForm.html'

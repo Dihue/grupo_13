@@ -50,16 +50,21 @@
             </div>
         </div>
         <div class="container col-3 mb-4 justify-content-center" id="post_contenido">
+            <div class="row">
             {% if user.id == post.user.id %}
-                <form class="d-flex justify-content-center mt-3" method="post" action="{% url 'posts:deletePost' post.id %}">
+                <form class="col-5 justify-content-center mt-3" method="post" action="{% url 'posts:deletePost' post.id %}">
                     {% csrf_token %}
                     <button type="submit" value="Comfirm" class="me-4 btn btn-outline-danger">
                         <b>ELIMINAR</b>
                     </button>
-                    <button href="" class="btn btn-outline-warning">
+                </form>
+                <form class="col-5 justify-content-center mt-3" method="post" action="{% url 'posts:editarPost' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" value="Comfirm" class="btn btn-outline-warning">
                         <b>Editar</b>
                     </button>
                 </form>
+            </div>
             {% elif user.is_superuser %}
                 <form class="ms-1 me-1" method="post" action="{% url 'posts:deletePost' post.id %}">
                     {% csrf_token %}
