@@ -6,6 +6,7 @@ from django.urls.base import reverse_lazy
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.db.models import Q
 from django.template import RequestContext
 from apps.posts.forms import PostForm, CommentForm
 from .models  import Categoria, Post, Comment
@@ -159,6 +160,11 @@ def postSearchView(request):
 
     if queryset:
         user = NewUser.objects.filter(username_icontains = queryset)
-        resultados['posts'] = Post.objects.filter()
-
+        resultados['posts'] = Post.objects.filter(
+            Q(title_icontains = queryset) | Q(user_in = user) | Q(categoria_nombre_icontains = queryset)
+        ).distinct()
+    
+    if categoria_id:
+        posteos = Post.objects.filter(categoria_id = categoria_id)
+        resultados['posts'] = posteos 
 
