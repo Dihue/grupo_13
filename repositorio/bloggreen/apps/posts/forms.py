@@ -9,14 +9,15 @@ class PostForm(forms.ModelForm):
         fields = [
             'title',
             'content',
-            'portada',
+            'thumbnail',
+            'categoria',
         ]
 
         labels = {
             'title': 'Ingrese el titulo'
         }
 
-class ComentForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
 
 	class Meta:
 		model = Comment

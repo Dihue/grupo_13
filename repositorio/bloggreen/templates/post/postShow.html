@@ -6,63 +6,84 @@
 {% endblock %}
 
 {% block content %}
-<div class="container" style="background: #FFF000">
-    <div class="row" style="background: #FF0000">
-        <div class="container mb-3 mt-3 d-flex justify-content-end" style="background: #FFFFFF">
-            <p><b>Post creado por {{ object.user.username }} - {{ object.publish_date }}</b></p>
-        </div>
-        <div class="container mb-4 d-flex justify-content-end">
-            {% if user.id == post.user.id %}
-                <form method="post" action="{% url 'posts:deletePost' post.id %}">
-                    {% csrf_token %}
-                    <button type="submit" value="Comfirm" class="btn btn-outline-danger btn-sm">
-                        <b>ELIMINAR</b>
-                    </button>
-                    <a href="{% url 'editarPost' post.id %}" class="btn btn-sm">
-                        <b>Editar</b>
-                    </a>
-                </form>
-            {% elif user.is_superuser %}
-                <form method="post" action="{% url 'posts:deletePost' post.id %}">
-                    {% csrf_token %}
-                    <button type="submit" value="Comfirm" class="btn btn-outline-danger btn-sm">
-                        <b>ELIMINAR</b>
-                    </button>
-                </form>
-            {% endif %}
-        </div>
-        <div class="container d-flex mt-3 mb-3 justify-content-center">
+<div class="container">
+    <div class="row">
+        <div class="container d-flex mt-3 mb-2 justify-content-center" id="post_contenido">
             <h2 class="card-header" style="color: #FFFFFF">{{ object.title }}</h2>
         </div>
-        <div class="container mb-5" id="post_contenido">
+    </div>
+    <div class="row">
+        <div class="container col-9 mb-4" id="post_contenido">
+            <div class="container mb-3 mt-3 d-flex justify-content-end">
+                <p><b>Post creado por {{ object.user.username }} - {{ object.publish_date }}</b></p>
+            </div>
             <div class="mt-1 mb-2">
                 <p>{{ object.content|safe }}</p>
-                {% if object.thumbnail %}
-                    <img src="{{ object.thumbnail.url }}" alt="">
-                {% endif %}
+                <div class="d-flex justify-content-center pt-4 pb-4">
+                    {% if object.thumbnail %}
+                        <img class="img-thumbnail" src="{{ object.thumbnail.url }}" alt="">
+                    {% endif %}
+                </div>
             </div>
-            {% if user.is_authenticated %}
-                <form method="post" action="{% url 'posts:likesPost' post.id %}">
-                    {% csrf_token %}
-                    {% if liked %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">Ya no me gusta</button>
-                    {% else %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">Me gusta</button>                        
+            <div class="mt-5 mb-3">
+                <div class="row">
+                    {% if user.is_authenticated %}
+                        <form class="col d-flex justify-content-center" method="post" action="{% url 'posts:likesPost' post.id %}">
+                            {% csrf_token %}
+                            <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-outline-warning">Me gusta</button>
+                        </form>
+                        <form class="col d-flex justify-content-center" method="post" action="{% url 'posts:dislikesPost' post.id %}">
+                            {% csrf_token %}
+                            <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-outline-danger">No me gusta</button>                           
+                        </form>
+                        <form class="col d-flex justify-content-center" method="post" action="">
+                            {% csrf_token %}
+                            <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-outline-info">Comentar</button>                           
+                        </form>
+
                     {% endif %}
-                    <br>
-                    <b>{{ total_likes }} LIKES</b>
+                    <div class="col-6 mt-1 d-flex justify-content-end">
+                        <b class="me-2">{{ object.total_likes }} LIKES</b>
+                        <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container col-3 mb-4 justify-content-center" id="post_contenido">
+            <div class="row">
+            {% if user.id == post.user.id %}
+                <form class="col-5 justify-content-center mt-3" method="post" action="{% url 'posts:deletePost' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" value="Comfirm" class="me-4 btn btn-outline-danger">
+                        <b>ELIMINAR</b>
+                    </button>
                 </form>
-                <form method="post" action="{% url 'posts:dislikesPost' post.id %}">
+                <form class="col-5 justify-content-center mt-3" method="post" action="{% url 'posts:editarPost' post.id %}">
                     {% csrf_token %}
-                    {% if disliked %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">No me gusta</button>
-                    {% else %}
-                        <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-like btn-sm">No me gusta</button>                        
-                    {% endif %}
-                    <br>
-                    <b>{{ total_dislikes }} DISLIKES</b>
+                    <button type="submit" value="Comfirm" class="btn btn-outline-warning">
+                        <b>Editar</b>
+                    </button>
+                </form>
+            </div>
+            {% elif user.is_superuser %}
+                <form class="ms-1 me-1" method="post" action="{% url 'posts:deletePost' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" value="Comfirm" class="btn btn-outline-danger btn-sm">
+                        <b>ELIMINAR</b>
+                    </button>
                 </form>
             {% endif %}
+            <div>
+                {% if object.user.image %}
+                    <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
+                {% else %}
+                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
+                {% endif %}
+
+                <div class="d-flex justify-content-center mt-4">
+                    <h4>{{ object.user.username }}</h4>
+                </div>
+            </div>
         </div>
     </div>
 </div>

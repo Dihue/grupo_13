@@ -6,11 +6,6 @@ from django.contrib.auth.models import User
 
 
 class RegisterUserForm(UserCreationForm):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    email = forms.EmailField()
-    birthdate = forms.DateField()
-
     class Meta:
         model = NewUser
         fields = [
@@ -31,5 +26,5 @@ class EditUserForm(UserChangeForm):
         'first_name',
         'last_name',
         'email',
-        'birthdate'
+        'birthday'
     ]
