@@ -8,6 +8,10 @@
 <link rel="stylesheet" type="text/css" href="{% static 'post/css/postCommentForm.css' %}">
 {% endblock %}
 
-{% block content%}
-
+{% block content %}
+    <div class="col-12 mb-4">
+        <small><strong>{{ comment.user.username }} - {{ comment.timestamp }}</strong></small>
+        <br/>
+        {{ comment.content|linebreaks }}
+    </div>
 {% endblock %}

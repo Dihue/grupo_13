@@ -45,4 +45,4 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, null=True, blank=False, on_delete=models.CASCADE, related_name='commentsPost')
 
     def __str__(self):
-       return '%s - %s' % (self.post.title, self.user)
+       return '%s - %s - %s - %s' % (self.post.title, self.user, self.id , self.content)

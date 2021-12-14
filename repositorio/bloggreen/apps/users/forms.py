@@ -21,10 +21,7 @@ class EditUserForm(UserChangeForm):
     model = NewUser
     fields = [
         'image',
-        'password1',
-        'password2',
         'first_name',
         'last_name',
         'email',
-        'birthday'
     ]
