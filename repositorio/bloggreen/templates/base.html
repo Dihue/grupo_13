@@ -49,7 +49,7 @@
 
                 {% if user.is_superuser %}
                 <li class="ms-2 me-2 nav-item">
-                    <a class="btn btn-outline-light" href="admin/">Permisos</a>
+                    <a class="btn btn-outline-light" href="{% url 'admin:index' %}">Permisos</a>
                 </li>
                 <li class="ms-2 me-2 nav-item">
                   <a class="btn btn-outline-light" href="{% url 'posts:crearPost' %}">Crear</a>
