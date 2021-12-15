@@ -85,6 +85,20 @@
                 </div>
             </div>
         </div>
+        <div>
+            {% if comment %}
+            <div class="col-12 mb-4">
+                <small><strong>{{ comment.user.username }} - {{ comment.timestamp }}</strong></small>
+                <br/>
+                {{ comment.content|linebreaks }}
+            </div>
+
+            {% else %}       
+                <div class="alert alert-danger">No hay nada acá</div>           
+            {% endif %}
+        </div>
+
+
     </div>
 </div>
 {% endblock %}
