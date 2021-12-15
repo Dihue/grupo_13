@@ -27,6 +27,7 @@
             </div>
             <div class="mt-5 mb-3">
                 <div class="row">
+                    <div class="alert alert-primary">¿Te gustó lo que viste? Dejanos un Like</div>
                     {% if user.is_authenticated %}
                         <form class="col d-flex justify-content-center" method="post" action="{% url 'posts:likesPost' post.id %}">
                             {% csrf_token %}
@@ -76,7 +77,7 @@
                 {% if object.user.image %}
                     <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
                 {% else %}
-                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
+                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/imagen/default.jpg' %}"></img>
                 {% endif %}
 
                 <div class="d-flex justify-content-center mt-4">
@@ -88,7 +89,7 @@
             <br/>
             <h4 id="tituloComentarios">COMENTARIOS:</h4>
             <hr/>
-            {% if object.commentsPost %}
+            {% if object.commentsPost.all %}
                 {% for p in object.commentsPost.all %}
                     <div class="col-12 mb-4">
                         <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>
@@ -98,7 +99,7 @@
                     </div>
                 {% endfor %}    
             {% else %}       
-                <div class="alert alert-danger">No hay nada acá</div>           
+                <div class="alert alert-danger">No hay comentarios aún, ¡sé el primero en comentar!</div>           
             {% endif %}
         </div>
     </div>
