@@ -76,7 +76,7 @@
                 {% if object.user.image %}
                     <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
                 {% else %}
-                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
+                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/imagen/Avatar.jpg' %}"></img>
                 {% endif %}
 
                 <div class="d-flex justify-content-center mt-4">
@@ -84,23 +84,23 @@
                 </div>
             </div>
         </div>
-        <div id="ComentariosContenido">
-            <br/>
-            <h4 id="tituloComentarios">COMENTARIOS:</h4>
-            <hr/>
-            {% if object.commentsPost %}
-                {% for p in object.commentsPost.all %}
-                    <div class="col-12 mb-4">
-                        <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>
-                        <br/>
-                        {{ p.content|linebreaks }}
-                        <hr/>
-                    </div>
-                {% endfor %}    
-            {% else %}       
-                <div class="alert alert-danger">No hay nada acá</div>           
-            {% endif %}
-        </div>
+    </div>
+    <div class="mb-5" id="ComentariosContenido">
+        <br/>
+        <h4 id="tituloComentarios">-COMENTARIOS:</h4>
+        <hr/>
+        {% if object.commentsPost.all %}
+            {% for p in object.commentsPost.all %}
+                <div class="col-12 mb-4">
+                    <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>
+                    <br/>
+                    {{ p.content|linebreaks }}
+                    <hr/>
+                </div>
+            {% endfor %}    
+        {% else %}       
+            <div class="alert alert-danger">No hay comentarios aún</div>           
+        {% endif %}
     </div>
 </div>
 {% endblock %}

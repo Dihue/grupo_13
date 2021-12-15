@@ -61,7 +61,7 @@ class PostEditView(LoginRequiredMixin, UpdateView):
         'title',
         'content',
         'thumbnail',
-        'categoria'
+        'categoria',
     ]
     template_name = 'post/postEdit.html'
     success_url = reverse_lazy('inicio')

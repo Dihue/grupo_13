@@ -23,7 +23,7 @@
             {% if user.image %}
 				<img src="{{ user.image.url }}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
 			{% else %}
-				<img src="{% static 'usuario/imagen/default.jpg' %}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
+				<img src="{% static 'usuario/imagen/avatar.jpg' %}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
 			{% endif %} 
 			<br>
 			<p class="item d-flex justify-content-center"> Nombre de Usuario <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #404848"> {{user}} </p> </p>
