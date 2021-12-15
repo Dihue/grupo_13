@@ -11,6 +11,5 @@ urlpatterns = [
     path('post/like/<str:pk>', like_view, name='likesPost'),
     path('post/dislike/<str:pk>', dislike_view, name='dislikesPost'),
     path('post/listar', PostListView.as_view(), name='listarPost'),
-    path('post/<int:pk>', PostCommentView.as_view(), name='comentarios'),
-    path('post/<int:pk>/crear_comment/', PostComment.as_view(), name='nuevo_comentarios')
+    path('post/<int:pk>/crear_comment/', PostComment.as_view(), name='nuevoComentario')
 ]

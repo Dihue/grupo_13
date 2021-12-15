@@ -113,6 +113,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
+''''
 class PostCommentView(LoginRequiredMixin, DetailView):
     model = Comment
     form_class = CommentForm
@@ -127,7 +128,7 @@ class PostCommentView(LoginRequiredMixin, DetailView):
         new.save()
 
         return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
-
+'''
 class PostComment(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
@@ -141,6 +142,6 @@ class PostComment(LoginRequiredMixin, CreateView):
         new.user = self.request.user
         new.save()
 
-        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
+        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(new.post_id)]))
 
 
