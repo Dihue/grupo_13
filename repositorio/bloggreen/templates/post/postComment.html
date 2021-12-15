@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'post/css/postCommentForm.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="col-12 mb-4">
+        <small><strong>{{ comment.user.username }} - {{ comment.timestamp }}</strong></small>
+        <br/>
+        {{ comment.content|linebreaks }}
+    </div>
+{% endblock %}
