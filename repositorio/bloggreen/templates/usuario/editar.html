@@ -7,6 +7,8 @@
      <link rel="stylesheet" type="text/css" href="{% static 'usuario/css/editar.css' %}">
 {% endblock %}
 
+
+
 {% block content %}
 	<div class="container editar mt-5 mb-3 text-white shadow-lg p-3 rounded" >
 		<div class="d-flex justify-content-center mb-2 mt-4">
@@ -16,46 +18,27 @@
 		<form class="container modificar mb-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
 			<div id="div_id_imagen" class="form-group"  >
 				<div class="">
-					{{ form.image |as_crispy_field }}
+					{{ form.image|as_crispy_field }}
 				</div>
 			</div>			
-			<div id="div_id_email" class="form-group" > 
-				<label for="id_email" class="">Dirección de  email</label> 
-				<div class=""> 
-					<input type="email" name="email" value="{{user.email}}" maxlength="254" class="emailinput form-control" id="id_email"> 
-				</div> 
-			</div> 
 			<div id="div_id_first_name" class="form-group" > 
 				<label for="id_first_name" class="">Nombre</label> 
 				<div class=""> 
-					<input type="text" name="first_name" value="{{user.first_name}}" maxlength="30" class="textinput textInput form-control" id="id_first_name"> 
+					<input type="text" name="first_name" value="{{user.first_name|as_crispy_field}}" maxlength="30" class="textinput textInput form-control" id="id_first_name"> 
 				</div> 
 			</div> 
 			<div id="div_id_last_name" class="form-group" > 
 				<label for="id_last_name" class="">Apellido</label> 
 				<div class=""> 
-					<input type="text" name="last_name" value="{{user.last_name}}" maxlength="150" class="textinput textInput form-control" id="id_last_name"> 
+					<input type="text" name="last_name" value="{{user.last_name|as_crispy_field}}" maxlength="150" class="textinput textInput form-control" id="id_last_name"> 
 				</div>
 			</div>
-            <div id="div_id_password1" class="form-group" > 
-				<label for="password1" class="">Contraseña 1</label> 
+			<div id="div_id_email" class="form-group" > 
+				<label for="id_email" class="">Dirección de  email</label> 
 				<div class=""> 
-					<input type="text" name="password1" value="{{user.password1}}" maxlength="150" class="textinput textInput form-control" id="id_password1"> 
-				</div>
-			</div>
-            <div id="div_id_password2" class="form-group" > 
-				<label for="password2" class="">Contraseña 2</label> 
-				<div class=""> 
-					<input type="text" name="password2" value="{{user.password2}}" maxlength="150" class="textinput textInput form-control" id="id_password2"> 
-				</div>
-			</div>
-            <div id="div_id_birthday" class="form-group" > 
-				<label for="birthday" class="">Fecha de Cumpleaños</label> 
-				<div class=""> 
-					<input type="text" name="birthday" value="{{user.birthday}}" maxlength="150" class="textinput textInput form-control" id="id_birthday"> 
-				</div>
-			</div>
-
+					<input type="email" name="email" value="{{user.email|as_crispy_field}}" maxlength="254" class="emailinput form-control" id="id_email"> 
+				</div> 
+			</div> 
 			<div class="boton d-flex justify-content-center mt-5">
 				<button type="submit" class="btn btn-boton_personalizado btn-lg btn-block"  value="CREAR">ACEPTAR</button>			
 			</div>									

@@ -36,10 +36,9 @@
                             {% csrf_token %}
                             <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-outline-danger">No me gusta</button>                           
                         </form>
-                        <form class="col d-flex justify-content-center" method="post" action="">
-                            {% csrf_token %}
-                            <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-outline-info">Comentar</button>                           
-                        </form>
+                        <div class="col d-flex justify-content-center">     
+                            <a class="btn btn-outline-info" href="{% url 'posts:nuevoComentario' post.pk %}">Comentar</a>                           
+                        </div>
 
                     {% endif %}
                     <div class="col-6 mt-1 d-flex justify-content-end">
@@ -84,6 +83,23 @@
                     <h4>{{ object.user.username }}</h4>
                 </div>
             </div>
+        </div>
+        <div id="ComentariosContenido">
+            <br/>
+            <h4 id="tituloComentarios">COMENTARIOS:</h4>
+            <hr/>
+            {% if object.commentsPost %}
+                {% for p in object.commentsPost.all %}
+                    <div class="col-12 mb-4">
+                        <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>
+                        <br/>
+                        {{ p.content|linebreaks }}
+                        <hr/>
+                    </div>
+                {% endfor %}    
+            {% else %}       
+                <div class="alert alert-danger">No hay nada acá</div>           
+            {% endif %}
         </div>
     </div>
 </div>
