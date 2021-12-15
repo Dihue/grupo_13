@@ -113,7 +113,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
-class PostCommentView(LoginRequiredMixin, CreateView):
+class PostCommentView(LoginRequiredMixin, DeleteView):
     model = Comment
     form_class = CommentForm
     template_name = 'post/postCommentForm.html'
