@@ -58,21 +58,21 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostEditView(LoginRequiredMixin, UpdateView):
     model = Post
     fields = [
-        'titulo',
-        'contenido',
-        'portada',
+        'title',
+        'content',
+        'thumbnail',
         'categoria'
     ]
     template_name = 'post/postEdit.html'
-    success_url = reverse_lazy('mostrarPost')
+    success_url = reverse_lazy('inicio')
     login_url = settings.LOGIN_URL
 
     def form_valid(self, form):
-        form.instance.usuario = self.request.user
+        form.instance.user = self.request.user
 
-        if form.instance.portada.name:
-            ext = form.instance.portada.name.split(".")[-1]
-            form.instance.portada.name = form.instance.title + '.' + ext
+        if form.instance.thumbnail.name:
+            ext = form.instance.thumbnail.name.split(".")[-1]
+            form.instance.thumbnail.name = form.instance.title + '.' + ext
 
         return super().form_valid(form)
 
@@ -112,7 +112,23 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
-class PostCommentView(LoginRequiredMixin, CreateView):
+''''
+class PostCommentView(LoginRequiredMixin, DetailView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'post/postComment.html'
+    success_url = reverse_lazy('inicio')
+    login_url = settings.LOGIN_URL
+
+    def form_valid(self, form):
+        new = form.save(commit = False)
+        new.post_id = self.kwargs['pk']
+        new.user = self.request.user
+        new.save()
+
+        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
+'''
+class PostComment(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'post/postCommentForm.html'
@@ -125,6 +141,6 @@ class PostCommentView(LoginRequiredMixin, CreateView):
         new.user = self.request.user
         new.save()
 
-        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
+        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(new.post_id)]))
 
 

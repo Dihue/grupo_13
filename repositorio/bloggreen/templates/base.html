@@ -38,7 +38,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="menu-nav2">
           {% if user.is_authenticated %}  
                 <div class="ms-1 me-1 nav-item">
-                    <a class="nav-link" aria-current="page" href="#" id="bienvenida"> 
+                    <a class="nav-link" aria-current="page" href="{% url 'perfil' %}"  id="bienvenida"> 
                        Hola {{user.username | upper }}
                     </a>
                 </div>
@@ -49,7 +49,7 @@
 
                 {% if user.is_superuser %}
                 <li class="ms-2 me-2 nav-item">
-                    <a class="btn btn-outline-light" href="admin/">Permisos</a>
+                    <a class="btn btn-outline-light" href="{% url 'admin:index' %}">Permisos</a>
                 </li>
                 <li class="ms-2 me-2 nav-item">
                   <a class="btn btn-outline-light" href="{% url 'posts:crearPost' %}">Crear</a>

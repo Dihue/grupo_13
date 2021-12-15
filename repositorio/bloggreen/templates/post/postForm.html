@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="row rounded">
-    <div class="col-12 item">
+    <div class="col-12 item mb-5" id="container-form">
         <form method="post" enctype="multipart/form-data" action="">
             {% csrf_token %}
 
@@ -20,25 +20,25 @@
                 </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row mt-2">
                 <div class="form-group col-12">
                     {{ form.thumbnail | as_crispy_field }}
                 </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row mt-2">
                 <div class="form-group col-12">
                     {{ form.content | as_crispy_field }}
                 </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row mt-2">
                 <div class="form-group col-12">
                     {{ form.categoria | as_crispy_field }}
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-outline-primary btn-lg btn-block mb-4" value="CREAR POST">CREAR POST</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg btn-block mb-4 mt-4" value="CREAR POST">CREAR POST</button>
         </form>
     </div>
 </div>

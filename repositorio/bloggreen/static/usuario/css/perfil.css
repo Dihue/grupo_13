@@ -1,0 +1,22 @@
+
+.cuerpo {    
+    background-color: #303535 !Important;    
+    height: 100%;
+    width: 650px;
+    padding-top: 40px;
+}
+
+.cuerpo .item {
+    font-size: 20px;
+    font-family: 'calibri';    
+}
+
+.btn:active {
+    background-color: #EC94A2!Important;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.img-responsive {
+    max-width: 20%;
+}

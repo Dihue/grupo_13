@@ -1,9 +1,0 @@
-.container_login {
-    background-color: lightgreen;
-    text-align: center;
-    min-height: calc(100vh - 100px - 315px);
-}
- body {
-    min-height: calc(100vh - 100px - 330px);
-    height: 100px;
- }
