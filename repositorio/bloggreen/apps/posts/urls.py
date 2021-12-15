@@ -10,6 +10,10 @@ urlpatterns = [
     path('post/eliminar/<str:pk>', PostDeleteView.as_view(), name='deletePost'),
     path('post/like/<str:pk>', like_view, name='likesPost'),
     path('post/dislike/<str:pk>', dislike_view, name='dislikesPost'),
+<<<<<<< HEAD
+    path('post/listar', PostListView.as_view(), name='listarPost')
+=======
     path('post/listar', PostListView.as_view(), name='listarPost'),
     path('post/<int:pk>/crear_comment/', PostComment.as_view(), name='nuevoComentario')
+>>>>>>> 0302e1ba6f5722db77a58dce322064946076e8b7
 ]

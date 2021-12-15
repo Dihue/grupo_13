@@ -83,7 +83,6 @@ class PostListView(ListView):
     template_name = 'post/postList.html'
     #template_name = 'index.html'
     context_object_name = 'posts'
-
 class PostShowView(DetailView):
     model = Post
     template_name = 'post/postShow.html'
