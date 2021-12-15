@@ -159,13 +159,18 @@ def postSearchView(request):
     categorias = Categoria.objects.all()
     resultados['categorias'] = categorias
 
+    print("\n\n\n",queryset,"\n\n\n")
+    print("\n\n\n",categoria_id,"\n\n\n")
+
     if queryset:
-        user = NewUser.objects.filter(username_icontains = queryset)
+        user = NewUser.objects.filter(username = queryset)
         resultados['posts'] = Post.objects.filter(
-            Q(title_icontains = queryset) | Q(user_in = user) | Q(categoria_nombre_icontains = queryset)
+            Q(title = queryset) | Q(user = user)
         ).distinct()
     
     if categoria_id:
         posteos = Post.objects.filter(categoria_id = categoria_id)
         resultados['posts'] = posteos 
+
+    return render(request,'buscador.html', resultados)
 

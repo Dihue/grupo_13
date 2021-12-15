@@ -52,6 +52,34 @@
                     </div>
                 </div>
             </div>
+            {% if posts %}
+                {% for post in posts %}
+                    {% if forloop.first%}
+                        <div class="row">
+                    {% endif %}
+
+                    <div class="col-4">
+                        <div class="card">
+                            <img class="card-img-top" height="180" src="{{ post.thumbnail.url }}">
+                            <div class="card-body">
+                                <h5 clas="card-title">{{ post.title }}</h5>
+                                <h6 class="card-subtitle">Autor: {{ post.user }} </h6>
+                                <p class="card-text">Categoría: {{ post.categoria.nombre }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:3 %}
+                        </div><div class="row">
+                    {% endif%}
+
+                    {% if forloop.last %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-danger">No hay nada acá</div>
+            {% endif %}
         </div>
     </div>
 </div>
