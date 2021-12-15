@@ -84,13 +84,17 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div id="ComentariosContenido">
+            <br/>
+            <h4 id="tituloComentarios">COMENTARIOS:</h4>
+            <hr/>
             {% if object.commentsPost %}
                 {% for p in object.commentsPost.all %}
                     <div class="col-12 mb-4">
                         <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>
                         <br/>
                         {{ p.content|linebreaks }}
+                        <hr/>
                     </div>
                 {% endfor %}    
             {% else %}       
