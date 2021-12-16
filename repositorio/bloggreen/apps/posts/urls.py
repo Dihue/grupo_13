@@ -13,4 +13,5 @@ urlpatterns = [
     path('post/listar', PostListView.as_view(), name='listarPost'),
     path('post/<int:pk>/crear_comment/', PostComment.as_view(), name='nuevoComentario'),
     path('busqueda', postSearchView, name = 'buscarPost'),
+    path('categoria', postCategoryView, name = 'categoriaPost'),
 ]

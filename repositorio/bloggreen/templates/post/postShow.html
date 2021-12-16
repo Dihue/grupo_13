@@ -40,11 +40,17 @@
                             <a class="btn btn-outline-info" href="{% url 'posts:nuevoComentario' post.pk %}">Comentar</a>                           
                         </div>
 
+                        <div class="col-6 mt-1 d-flex justify-content-end">
+                            <b class="me-2">{{ object.total_likes }} LIKES</b>
+                            <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
+                        </div>
+
+                    {% else %}
+                        <div class="mt-1 d-flex justify-content-end">
+                            <b class="me-2">{{ object.total_likes }} LIKES</b>
+                            <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
+                        </div>
                     {% endif %}
-                    <div class="col-6 mt-1 d-flex justify-content-end">
-                        <b class="me-2">{{ object.total_likes }} LIKES</b>
-                        <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
-                    </div>
                 </div>
             </div>
         </div>
@@ -84,11 +90,11 @@
                 </div>
             </div>
         </div>
-        <div id="ComentariosContenido">
+        <div class="mb-5" id="ComentariosContenido">
             <br/>
             <h4 id="tituloComentarios">COMENTARIOS:</h4>
             <hr/>
-            {% if object.commentsPost %}
+            {% if object.commentsPost.all %}
                 {% for p in object.commentsPost.all %}
                     <div class="col-12 mb-4">
                         <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>

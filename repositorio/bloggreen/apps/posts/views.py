@@ -115,22 +115,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
-''''
-class PostCommentView(LoginRequiredMixin, DetailView):
-    model = Comment
-    form_class = CommentForm
-    template_name = 'post/postComment.html'
-    success_url = reverse_lazy('inicio')
-    login_url = settings.LOGIN_URL
-
-    def form_valid(self, form):
-        new = form.save(commit = False)
-        new.post_id = self.kwargs['pk']
-        new.user = self.request.user
-        new.save()
-
-        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
-'''
 class PostComment(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
@@ -153,24 +137,31 @@ def search(request):
 
 def postSearchView(request):
     queryset = request.GET.get("buscar")
+
+    resultados = {}
+    categorias = Categoria.objects.all()
+    resultados['categorias'] = categorias
+
+    if queryset:
+        user = NewUser.objects.filter(username = queryset)
+        resultados['posts'] = Post.objects.filter(
+            Q(title__icontains = queryset) |
+            Q(user__in = user)
+        ).distinct()
+
+    return render(request,'buscador.html', resultados)
+
+def postCategoryView(request):
+
     categoria_id = request.GET.get('filtro', None)
 
     resultados = {}
     categorias = Categoria.objects.all()
     resultados['categorias'] = categorias
 
-    print("\n\n\n",queryset,"\n\n\n")
-    print("\n\n\n",categoria_id,"\n\n\n")
-
-    if queryset:
-        user = NewUser.objects.filter(username = queryset)
-        resultados['posts'] = Post.objects.filter(
-            Q(title = queryset) | Q(user = user)
-        ).distinct()
-    
     if categoria_id:
         posteos = Post.objects.filter(categoria_id = categoria_id)
         resultados['posts'] = posteos 
 
-    return render(request,'buscador.html', resultados)
+    return render(request,'post/postCategory.html', resultados)
 

@@ -3,38 +3,13 @@
 
 {% block css %}
   {{ block.super }}
-   <link rel="stylesheet" type="text/css" href="{% static 'base/css/buscador.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'base/css/postCategory.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container mb-5">
     <div class="row">
         <div class="col-12">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 search">
-                        <div class="text-center">
-                            <form method="get">
-                                <div id="custom-search-input">
-                                    <h4>Ingrese titulo del post a buscar</h5>
-                                    <br>
-                                    <h5>Ingrese nombre del usuario del creador del post a buscar</h5>
-                                    <br>
-                                    <div class="mt-2">
-                                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
-                                        <span class="input-group-list">
-                                            <i class="icon icon-search"></i>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-outline-light mt-4">Buscar</button>
-                                            </div>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             {% if posts %}
                 {% for post in posts %}
                     {% if forloop.first%}

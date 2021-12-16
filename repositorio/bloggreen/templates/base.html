@@ -31,8 +31,8 @@
             </a>
           </div>
           <form class="ps-5 pe-3 col-4 d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="buscar">
+            <button class="btn btn-outline-success" type="submit" href="{% url 'posts:buscarPost' %}?filtro=">Buscar</button>
           </form>
         </nav>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="menu-nav2">

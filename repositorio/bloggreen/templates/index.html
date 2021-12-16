@@ -15,93 +15,95 @@
     <div class="row g-0">
         <div class="col-3 pe-5">
             <nav class="list-group pe-5" id="lista_categorias">
-                <a class="list-group-item list-group-item-action d-flex justify-content-center" id="TITULO_ODS">
+                <a href="{% url 'posts:listarPost' %}" class="list-group-item list-group-item-action d-flex justify-content-center" id="TITULO_ODS">
                     17 ODS
                 </a>
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods1">Fin de la pobreza</button>
-                <a class="panel" id="but-ods1">
-                    <img src="{% static 'base/img/ODS1.png' %}" alt="">
-                </a>
+                <div name="buscar" id="">
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods1">Fin de la pobreza</button>
+                    <a class="panel" id="but-ods1" href="{% url 'posts:categoriaPost' %}?filtro=1">
+                        <img type="submit" src="{% static 'base/img/ODS1.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods2">Hambre cero</button>
-                <a class="panel" id="but-ods2">
-                    <img src="{% static 'base/img/ODS2.png' %}" alt="">
-                </a>
-                
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods3">Salud y bienestar</button>
-                <a class="panel" id="but-ods3">
-                    <img src="{% static 'base/img/ODS3.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods2">Hambre cero</button>
+                    <a class="panel" id="but-ods2" href="{% url 'posts:categoriaPost' %}?filtro=2">
+                        <img src="{% static 'base/img/ODS2.png' %}" alt="">
+                    </a>
+                    
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods3">Salud y bienestar</button>
+                    <a class="panel" id="but-ods3" href="{% url 'posts:categoriaPost' %}?filtro=3">
+                        <img src="{% static 'base/img/ODS3.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods4">Educación de calidad</button>
-                <a class="panel" id="but-ods4">
-                    <img src="{% static 'base/img/ODS4.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods4">Educación de calidad</button>
+                    <a class="panel" id="but-ods4" href="{% url 'posts:categoriaPost' %}?filtro=4">
+                        <img src="{% static 'base/img/ODS4.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods5">Igualdad de género</button>
-                <a class="panel" id="but-ods5">
-                    <img src="{% static 'base/img/ODS5.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods5">Igualdad de género</button>
+                    <a class="panel" id="but-ods5" href="{% url 'posts:categoriaPost' %}?filtro=5">
+                        <img src="{% static 'base/img/ODS5.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods6">Agua limpia y saneamiento</button>
-                <a class="panel" id="but-ods6">
-                    <img src="{% static 'base/img/ODS6.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods6">Agua limpia y saneamiento</button>
+                    <a class="panel" id="but-ods6" href="{% url 'posts:categoriaPost' %}?filtro=6">
+                        <img src="{% static 'base/img/ODS6.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods7">Energía asequible y no contaminante</button>
-                <a class="panel" id="but-ods7">
-                    <img src="{% static 'base/img/ODS7.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods7">Energía asequible y no contaminante</button>
+                    <a class="panel" id="but-ods7" href="{% url 'posts:categoriaPost' %}?filtro=7">
+                        <img src="{% static 'base/img/ODS7.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods8">Trabajo decente y crecimiento económico</button>
-                <a class="panel" id="but-ods8">
-                    <img src="{% static 'base/img/ODS8.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods8">Trabajo decente y crecimiento económico</button>
+                    <a class="panel" id="but-ods8" href="{% url 'posts:categoriaPost' %}?filtro=8">
+                        <img src="{% static 'base/img/ODS8.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods9">Industria, innovación e infraestructura</button>
-                <a class="panel" id="but-ods9">
-                    <img src="{% static 'base/img/ODS9.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods9">Industria, innovación e infraestructura</button>
+                    <a class="panel" id="but-ods9" href="{% url 'posts:categoriaPost' %}?filtro=9">
+                        <img src="{% static 'base/img/ODS9.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods10">Reducción de las desigualdades</button>
-                <a class="panel" id="but-ods10">
-                    <img src="{% static 'base/img/ODS10.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods10">Reducción de las desigualdades</button>
+                    <a class="panel" id="but-ods10" href="{% url 'posts:categoriaPost' %}?filtro=10">
+                        <img src="{% static 'base/img/ODS10.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods11">Ciudades y comunidades sostenibles</button>
-                <a class="panel" id="but-ods11">
-                    <img src="{% static 'base/img/ODS11.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods11">Ciudades y comunidades sostenibles</button>
+                    <a class="panel" id="but-ods11" href="{% url 'posts:categoriaPost' %}?filtro=11">
+                        <img src="{% static 'base/img/ODS11.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods12">Producción y consumos responsables</button>
-                <a class="panel" id="but-ods12">
-                    <img src="{% static 'base/img/ODS12.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods12">Producción y consumos responsables</button>
+                    <a class="panel" id="but-ods12" href="{% url 'posts:categoriaPost' %}?filtro=12">
+                        <img src="{% static 'base/img/ODS12.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods13">Acción por el clima</button>
-                <a class="panel" id="but-ods13">
-                    <img src="{% static 'base/img/ODS13.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods13">Acción por el clima</button>
+                    <a class="panel" id="but-ods13" href="{% url 'posts:categoriaPost' %}?filtro=13">
+                        <img src="{% static 'base/img/ODS13.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods14">Vida submarina</button>
-                <a class="panel" id="but-ods14">
-                    <img src="{% static 'base/img/ODS14.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods14">Vida submarina</button>
+                    <a class="panel" id="but-ods14" href="{% url 'posts:categoriaPost' %}?filtro=14">
+                        <img src="{% static 'base/img/ODS14.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods15">Vida de ecosistemas terrestres</button>
-                <a class="panel" id="but-ods15">
-                    <img src="{% static 'base/img/ODS15.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods15">Vida de ecosistemas terrestres</button>
+                    <a class="panel" id="but-ods15" href="{% url 'posts:categoriaPost' %}?filtro=15">
+                        <img src="{% static 'base/img/ODS15.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods16">Paz, justicia e instituciónes sólidas</button>
-                <a class="panel" id="but-ods16">
-                    <img src="{% static 'base/img/ODS16.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods16">Paz, justicia e instituciónes sólidas</button>
+                    <a class="panel" id="but-ods16" href="{% url 'posts:categoriaPost' %}?filtro=16">
+                        <img src="{% static 'base/img/ODS16.png' %}" alt="">
+                    </a>
 
-                <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods17">Alianzas para lograr los objetivos</button>
-                <a class="panel" id="but-ods17">
-                    <img src="{% static 'base/img/ODS17.png' %}" alt="">
-                </a>
+                    <button class="accordion list-group-item list-group-item-action d-flex justify-content-center" id="but-ods17">Alianzas para lograr los objetivos</button>
+                    <a class="panel" id="but-ods17" href="{% url 'posts:categoriaPost' %}?filtro=17">
+                        <img src="{% static 'base/img/ODS17.png' %}" alt="">
+                    </a>
+                </div>
             </nav>  
         </div>
           
