@@ -18,10 +18,11 @@ class RegisterUserForm(UserCreationForm):
         ]
 
 class EditUserForm(UserChangeForm):
-    model = NewUser
-    fields = [
-        'image',
-        'first_name',
-        'last_name',
-        'email',
-    ]
+    class Meta:
+        model = NewUser
+        fields = [
+            'image',
+            'first_name',
+            'last_name',
+            'email',
+        ]

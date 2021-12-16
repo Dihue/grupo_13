@@ -7,41 +7,39 @@
      <link rel="stylesheet" type="text/css" href="{% static 'usuario/css/editar.css' %}">
 {% endblock %}
 
-
-
 {% block content %}
-	<div class="container editar mt-5 mb-3 text-white shadow-lg p-3 rounded" >
-		<div class="d-flex justify-content-center mb-2 mt-4">
-			<h1>EDITAR PERFIL</h1>
+<div class="container editar mt-5 mb-3 text-white shadow-lg p-3 rounded" >
+	<div class="d-flex justify-content-center mb-2 mt-4">
+		<h1>EDITAR PERFIL</h1>
+	</div>
+	<div class="row cuerpo rounded" id="post_contenido">
+		<div class="col-12 item">
+			<form method="post" class="text-white" enctype="multipart/form-data">
+				{% csrf_token %}
+				
+					<div class="form-row mt-4">
+						<div class="form-group col-12">
+								{{ form.image|as_crispy_field }}
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12">
+								{{ form.first_name|as_crispy_field }}
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12">
+								{{ form.last_name|as_crispy_field }}
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12">
+								{{ form.email|as_crispy_field }}
+						</div>
+					</div>
+				<button type="submit" class="btn btn-light mt-5 btn-lg btn-block mb-4" value="CREAR POST">MODIFICAR POST</button>   
+			</form>
 		</div>
-		{{form.errors}}	
-		<form class="container modificar mb-4" method="POST" enctype="multipart/form-data">{% csrf_token %}
-			<div id="div_id_imagen" class="form-group"  >
-				<div class="">
-					{{ form.image|as_crispy_field }}
-				</div>
-			</div>			
-			<div id="div_id_first_name" class="form-group" > 
-				<label for="id_first_name" class="">Nombre</label> 
-				<div class=""> 
-					<input type="text" name="first_name" value="{{user.first_name|as_crispy_field}}" maxlength="30" class="textinput textInput form-control" id="id_first_name"> 
-				</div> 
-			</div> 
-			<div id="div_id_last_name" class="form-group" > 
-				<label for="id_last_name" class="">Apellido</label> 
-				<div class=""> 
-					<input type="text" name="last_name" value="{{user.last_name|as_crispy_field}}" maxlength="150" class="textinput textInput form-control" id="id_last_name"> 
-				</div>
-			</div>
-			<div id="div_id_email" class="form-group" > 
-				<label for="id_email" class="">Dirección de  email</label> 
-				<div class=""> 
-					<input type="email" name="email" value="{{user.email|as_crispy_field}}" maxlength="254" class="emailinput form-control" id="id_email"> 
-				</div> 
-			</div> 
-			<div class="boton d-flex justify-content-center mt-5">
-				<button type="submit" class="btn btn-boton_personalizado btn-lg btn-block"  value="CREAR">ACEPTAR</button>			
-			</div>									
-		</form>				
-	</div>		
+	</div>
+</div>
 {% endblock %}
