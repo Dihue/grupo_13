@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.db.models import Q
 from django.template import RequestContext
-from apps.posts.forms import PostForm, CommentForm
+from apps.posts.forms import PostForm, EditPostForm, CommentForm
 from .models  import Categoria, Post, Comment
 from apps.users.models import NewUser
 
@@ -59,12 +59,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostEditView(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = [
-        'title',
-        'content',
-        'thumbnail',
-        'categoria',
-    ]
+    form_class = EditPostForm
     template_name = 'post/postEdit.html'
     success_url = reverse_lazy('inicio')
     login_url = settings.LOGIN_URL
@@ -80,10 +75,8 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 
 class PostListView(ListView):
     model = Post
-    paginate_by = 5
     ordering = ['-publish_date']
     template_name = 'post/postList.html'
-    #template_name = 'index.html'
     context_object_name = 'posts'
 
 class PostShowView(DetailView):
