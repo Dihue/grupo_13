@@ -1,5 +1,7 @@
 #cuadro_Registro{
     border: solid #fcfaf5 5px;
-    background-color: blueviolet;
+    background-color: #303535;
     text-align: center;
+    color: #fcfaf5;
+    justify-content: center;
 }
