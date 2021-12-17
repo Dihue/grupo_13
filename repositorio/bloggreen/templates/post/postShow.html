@@ -68,7 +68,7 @@
                             <b>Editar</b>
                         </a>
                     </div>
-                </div>
+            
                 {% elif user.is_superuser %}
                     <form class="ms-1 me-1" method="post" action="{% url 'posts:deletePost' post.id %}">
                         {% csrf_token %}
@@ -77,20 +77,22 @@
                         </button>
                     </form>
                 {% endif %}
-            </div>
-            <div>
-                {% if object.user.image %}
-                    <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
-                {% else %}
-                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
-                {% endif %}
-
-                <div class="d-flex justify-content-center mt-4">
-                    <h4>{{ object.user.username }}</h4>
+                <div>
+                    {% if object.user.image %}
+                        <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
+                    {% else %}
+                        <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
+                    {% endif %}
+        
+                    <div class="d-flex justify-content-center mt-4">
+                        <h4>{{ object.user.username }}</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container">
     <div class="row mb-5" id="ComentariosContenido">
         <br/>
         <h4 id="tituloComentarios">COMENTARIOS:</h4>
