@@ -1,5 +1,5 @@
 from django import template
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import Http404, HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls.base import reverse_lazy
@@ -75,6 +75,14 @@ class PostEditView(LoginRequiredMixin, UpdateView):
             form.instance.thumbnail.name = form.instance.title + '.' + ext
 
         return super().form_valid(form)
+
+    def post_edit(request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        if post.user != request.user:
+            raise MsjException('¡No tenes permiso para modificar este post!')
+
+class MsjException(Exception):
+    pass
 
 class PostListView(ListView):
     model = Post
