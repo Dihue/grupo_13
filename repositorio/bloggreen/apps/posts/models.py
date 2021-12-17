@@ -35,6 +35,12 @@ class Post(models.Model):
     def total_dislikes(self):
         return self.dislike.count()
 
+    def total_likes(self):
+        return self.like.count()
+    
+    def total_dislike(self):
+        return self.dislike.count()
+
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)

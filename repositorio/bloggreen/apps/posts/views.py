@@ -79,6 +79,10 @@ class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class MsjException(Exception):
     pass
 
+
+def like_view(request, pk):
+    post = get_object_or_404(Post, id= request.POST.get('post_id'))
+    liked = False
 class PostListView(ListView):
     model = Post
     ordering = ['-publish_date']
