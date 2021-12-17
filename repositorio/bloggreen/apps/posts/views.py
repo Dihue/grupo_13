@@ -6,9 +6,11 @@ from django.urls.base import reverse_lazy
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.db.models import Q
 from django.template import RequestContext
-from apps.posts.forms import PostForm, CommentForm
-from .models  import Post, Comment
+from apps.posts.forms import PostForm, EditPostForm, CommentForm
+from .models  import Categoria, Post, Comment
+from apps.users.models import NewUser
 
 def like_view(request, pk):
     post = get_object_or_404(Post, id = request.POST.get('post_id'))
@@ -57,12 +59,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostEditView(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = [
-        'title',
-        'content',
-        'thumbnail',
-        'categoria',
-    ]
+    form_class = EditPostForm
     template_name = 'post/postEdit.html'
     success_url = reverse_lazy('inicio')
     login_url = settings.LOGIN_URL
@@ -78,10 +75,8 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 
 class PostListView(ListView):
     model = Post
-    paginate_by = 5
     ordering = ['-publish_date']
     template_name = 'post/postList.html'
-    #template_name = 'index.html'
     context_object_name = 'posts'
 
 class PostShowView(DetailView):
@@ -113,22 +108,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('inicio')
 
-''''
-class PostCommentView(LoginRequiredMixin, DetailView):
-    model = Comment
-    form_class = CommentForm
-    template_name = 'post/postComment.html'
-    success_url = reverse_lazy('inicio')
-    login_url = settings.LOGIN_URL
-
-    def form_valid(self, form):
-        new = form.save(commit = False)
-        new.post_id = self.kwargs['pk']
-        new.user = self.request.user
-        new.save()
-
-        return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str[new.post_id]]))
-'''
 class PostComment(LoginRequiredMixin, CreateView):
     model = Comment
     form_class = CommentForm
@@ -144,4 +123,38 @@ class PostComment(LoginRequiredMixin, CreateView):
 
         return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(new.post_id)]))
 
+#-------------------------------BUSCADOR----------------------------------------------------------
+
+def search(request):
+    return render(request, 'buscador.html')
+
+def postSearchView(request):
+    queryset = request.GET.get("buscar")
+
+    resultados = {}
+    categorias = Categoria.objects.all()
+    resultados['categorias'] = categorias
+
+    if queryset:
+        user = NewUser.objects.filter(username = queryset)
+        resultados['posts'] = Post.objects.filter(
+            Q(title__icontains = queryset) |
+            Q(user__in = user)
+        ).distinct()
+
+    return render(request,'buscador.html', resultados)
+
+def postCategoryView(request):
+
+    categoria_id = request.GET.get('filtro', None)
+
+    resultados = {}
+    categorias = Categoria.objects.all()
+    resultados['categorias'] = categorias
+
+    if categoria_id:
+        posteos = Post.objects.filter(categoria_id = categoria_id)
+        resultados['posts'] = posteos 
+
+    return render(request,'post/postCategory.html', resultados)
 

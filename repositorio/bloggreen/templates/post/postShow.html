@@ -45,11 +45,17 @@
                             <a class="btn btn-outline-info" href="{% url 'posts:nuevoComentario' post.pk %}">Comentar</a>                           
                         </div>
 
+                        <div class="col-6 mt-1 d-flex justify-content-end">
+                            <b class="me-2">{{ object.total_likes }} LIKES</b>
+                            <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
+                        </div>
+
+                    {% else %}
+                        <div class="mt-1 d-flex justify-content-end">
+                            <b class="me-2">{{ object.total_likes }} LIKES</b>
+                            <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
+                        </div>
                     {% endif %}
-                    <div class="col-6 mt-1 d-flex justify-content-end">
-                        <b class="me-2">{{ object.total_likes }} LIKES</b>
-                        <b class="ms-2">{{ object.total_dislikes }} DISLIKES</b>
-                    </div>
                 </div>
             </div>
         </div>
@@ -62,12 +68,11 @@
                         <b>ELIMINAR</b>
                     </button>
                 </form>
-                <form class="col-5 justify-content-center mt-3" method="post" action="{% url 'posts:editarPost' post.id %}">
-                    {% csrf_token %}
-                    <button type="submit" value="Comfirm" class="btn btn-outline-warning">
+                <div class="col-5 justify-content-center mt-3" >
+                    <a href="{% url 'posts:editarPost' post.id %}" type="submit" value="Comfirm" class="btn btn-outline-warning">
                         <b>Editar</b>
-                    </button>
-                </form>
+                    </a>
+                </div>
             </div>
             {% elif user.is_superuser %}
                 <form class="ms-1 me-1" method="post" action="{% url 'posts:deletePost' post.id %}">
@@ -89,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div id="ComentariosContenido">
+        <div class="mb-5" id="ComentariosContenido">
             <br/>
             <h4 id="tituloComentarios">COMENTARIOS:</h4>
             <hr/>

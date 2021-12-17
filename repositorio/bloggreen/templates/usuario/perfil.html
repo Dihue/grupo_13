@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!-- AGREGO EL TITULO DEL TEMPLATE-->
-{% block titulo %}
-
-{% endblock %}
-
-<!--DE ESTA FORMA AGREGO EL PERFIL.CSS AL BLOQUE DE LA BASE/ BLOCK.SUPER SE USA PARA OBTENER EL CONTENIDO DEL BLOQUE PADRE -->
 {% block css %}
 	{{ block.super }}
 	<link rel="stylesheet" type="text/css" href="{% static 'usuario/css/perfil.css' %}">
@@ -33,7 +27,7 @@
 		</div>
 		
 		<div class="botonmodificar mt-5 d-flex justify-content-center">
-			<a href="" class="btn btn-outline-light mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL</a>            
+			<a href="{% url 'users:editar' %}" class="btn btn-outline-light mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL</a>            
 		</div>
 	</div>
 	

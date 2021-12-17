@@ -17,6 +17,17 @@ class PostForm(forms.ModelForm):
             'title': 'Ingrese el titulo'
         }
 
+class EditPostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+
+        fields = [
+            'title',
+            'content',
+            'thumbnail',
+            'categoria',
+        ]
+
 class CommentForm(forms.ModelForm):
 
 	class Meta:

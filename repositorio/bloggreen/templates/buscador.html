@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  {{ block.super }}
+   <link rel="stylesheet" type="text/css" href="{% static 'base/css/buscador.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 search">
+                        <div class="text-center">
+                            <form method="get">
+                                <div id="custom-search-input">
+                                    <h4>Ingrese titulo del post a buscar</h5>
+                                    <br>
+                                    <h5>Ingrese nombre del usuario del creador del post a buscar</h5>
+                                    <br>
+                                    <div class="mt-2">
+                                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar">
+                                        <span class="input-group-list">
+                                            <i class="icon icon-search"></i>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-outline-light mt-4">Buscar</button>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if posts %}
+                {% for post in posts %}
+                    {% if forloop.first%}
+                        <div class="row mt-4">
+                    {% endif %}
+
+                    <div class="col-4 mb-4">
+                        <div class="card">
+                            {% if post.thumbnail %}
+                                <img class="card-img-top" height="180" src="{{ post.thumbnail.url }}">
+                            {% else %}
+                                <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" height="180" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 clas="card-title">{{ post.title }}</h5>
+                                <h6 class="card-subtitle">Autor: {{ post.user }} </h6>
+                                <p class="card-text">Categoría: {{ post.categoria.nombre }} </p>
+                                <div class="card-body mt-2 d-flex justify-content-center">
+                                    <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:3 %}
+                        </div><div class="row">
+                    {% endif%}
+
+                    {% if forloop.last %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-danger mt-4">No hay nada acá</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
