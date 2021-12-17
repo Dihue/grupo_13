@@ -6,13 +6,17 @@
 {% endblock %}
 
 {% block content %}
-    <div class="mt-3">
+    <div class="mt-3 mb-3">
         {% if posts %}
             {% for post in posts %}
                 {% if forloop.first%}<div class="row">{% endif %}
                 <div class="col-4">
-                    <div class="card">
-                        <img class="card-img-top" height="180" src="{{ post.thumbnail.url }}">
+                    <div class="card mt-5">
+                        {% if post.thumbnail %}
+                            <img class="" height="280" src="{{ post.thumbnail.url }}">
+                        {% else %}
+                            <img src="{% static 'base/img/ciudad.jpg' %}" height="280" class="" alt="...">
+                        {% endif %}
                         <div class="card-body">
                             <h5 clas="card-title">{{ post.title }}</h5>
                             <h6 class="card-subtitle">Autor: {{ post.user }} </h6>

@@ -6,11 +6,6 @@ from django.contrib.auth.models import User
 
 
 class RegisterUserForm(UserCreationForm):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    email = forms.EmailField()
-    birthdate = forms.DateField()
-
     class Meta:
         model = NewUser
         fields = [
@@ -23,13 +18,11 @@ class RegisterUserForm(UserCreationForm):
         ]
 
 class EditUserForm(UserChangeForm):
-    model = NewUser
-    fields = [
-        'image',
-        'password1',
-        'password2',
-        'first_name',
-        'last_name',
-        'email',
-        'birthdate'
-    ]
+    class Meta:
+        model = NewUser
+        fields = [
+            'image',
+            'first_name',
+            'last_name',
+            'email',
+        ]

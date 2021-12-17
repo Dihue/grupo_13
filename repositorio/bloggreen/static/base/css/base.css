@@ -1,6 +1,12 @@
+body {
+    background: url("/static/base/img/fondo.jpg") no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 #pie_pagina{
     flex-shrink: none;
-	margin-top: 100px; 
 }
 
 #img-temporal{
