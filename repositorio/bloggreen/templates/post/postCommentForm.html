@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- AGREGO EL TITULO DEL TEMPLATE-->
+
+
+{% load crispy_forms_tags %}
+
+{% block css %}
+    {{ block.super }}
+     <link rel="stylesheet" type="text/css" href="{% static 'post/css/post.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container comentario">
+    <div class="row cuerpo rounded">
+        <div class="col-12 item mt-5 mb-5">
+            <form method="post" class="text-white">
+                {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            {{ form.content|as_crispy_field }}                            
+                        </div>
+                    </div>
+                <button type="submit" class="btn btn-dark mt-5 btn-lg btn-block mb-4" value="CREAR COMENTARIO">CREAR COMENTARIO</button>   
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

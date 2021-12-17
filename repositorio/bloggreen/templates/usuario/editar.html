@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+     <link rel="stylesheet" type="text/css" href="{% static 'usuario/css/editar.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container editar mt-5 mb-3 text-white shadow-lg p-3 rounded" >
+	<div class="d-flex justify-content-center mb-2 mt-4">
+		<h1>EDITAR PERFIL</h1>
+	</div>
+	<div class="row cuerpo rounded" id="post_contenido">
+		<div class="col-12 item">
+			<form method="post" class="text-white" enctype="multipart/form-data">
+				{% csrf_token %}
+				
+					<div class="form-row mt-4">
+						<div class="form-group col-12">
+								{{ form.image|as_crispy_field }}
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12">
+								{{ form.first_name|as_crispy_field }}
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12">
+								{{ form.last_name|as_crispy_field }}
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12">
+								{{ form.email|as_crispy_field }}
+						</div>
+					</div>
+				<button type="submit" class="btn btn-light mt-5 btn-lg btn-block mb-4" value="CREAR POST">MODIFICAR PERFIL</button>   
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

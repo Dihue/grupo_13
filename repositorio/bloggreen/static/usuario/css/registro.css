@@ -1,0 +1,7 @@
+#container_registro {
+    height: auto;
+    background-color: #303535;
+    color: #FFFFFF;
+    border: solid 2px #FFFFFF;
+    border-radius: 5px;
+}

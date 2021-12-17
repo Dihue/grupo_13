@@ -1,0 +1,13 @@
+#container_login {
+    height: auto;
+    background-color: #303535;
+    color: #FFFFFF;
+    border: solid 2px #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+    min-height: calc(100vh - 100px - 315px);
+}
+
+footer{
+    margin-top: 50px;
+}

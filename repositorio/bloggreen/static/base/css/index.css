@@ -1,17 +1,173 @@
-#Primer_Lorem{
-    text-align: center;
-    font-size: 25px;
-    margin-top: 20%;
+#lista_categorias{
+    padding-top: 0%;
     
 }
 
-#lista_categorias{
-    padding-top: 3%;
-    padding-right:80%;
-}
 #TITULO_ODS{
     background-color:darkgoldenrod;
+    font-size: 20px;
+    font-weight: bold;
+    
 }
 
+div img{
+    width: 50%;
+    height: 50%;
+}
 
+#but-ods1{
+    background-color: #e5243b;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
 
+#but-ods2{
+    background-color: #dda83a;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods3{
+    background-color: #4c9f38;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods4{
+    background-color: #c5192d;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods5{
+    background-color: #ff3a21;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods6{
+    background-color: #26bde2;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods7{
+    background-color: #fcc30b;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods8{
+    background-color: #a21942;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods9{
+    background-color: #fd6925;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods10{
+    background-color: #dd1367;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods11{
+    background-color: #fd9d24;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods12{
+    background-color: #bf8b2e;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods13{
+    background-color: #3f7e44;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+#but-ods14{
+    background-color: #0a97d9;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+#but-ods15{
+    background-color: #56c02b;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+#but-ods16{
+    background-color: #00689d;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#but-ods17{
+    background-color: #19486a;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+  
+.panel {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+
+  

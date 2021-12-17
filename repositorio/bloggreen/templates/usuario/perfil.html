@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'usuario/css/perfil.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="container cuerpo mt-5 mb-5 text-white shadow-lg p-3 rounded"> 
+		<div class="container perfil d-flex justify-content-center text-white ">
+			<h2 class="titulo mt-3 mb-4">PERFIL DE USUARIO</h2>
+		</div>
+		<div class="container descripcion text-white">
+            {% if user.image %}
+				<img src="{{ user.image.url }}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
+			{% else %}
+				<img src="{% static 'usuario/imagen/avatar.jpg' %}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
+			{% endif %} 
+			<br>
+			<p class="item d-flex justify-content-center"> Nombre de Usuario <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #404848"> {{user}} </p> </p>
+			<p class="item d-flex justify-content-center"> Nombre <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #404848"> {{user.first_name}} </p> </p>
+			<p class="item d-flex justify-content-center"> Apellido <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #404848"> {{user.last_name}} </p> </p>
+			<p class="item d-flex justify-content-center"> Email <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #404848"> {{user.email}} </p> </p>
+		</div>
+		
+		<div class="botonmodificar mt-5 d-flex justify-content-center">
+			<a href="{% url 'users:editar' %}" class="btn btn-outline-light mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL!</a>            
+		</div>
+	</div>
+	
+{% endblock %}

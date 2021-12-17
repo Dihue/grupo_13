@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'usuario/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+    <div class="row d-inline-flex justify-content-center pt-5 mt-5 mb-5 pe-1" id="container_login">
+        <div class="col-lg-6">
+            <h2 class="fw-bolder" >Login</h2>
+            <form class="form" method="post">{% csrf_token %}
+                
+            {{ form.as_p }}
+                    
+                <button class="btn btn-outline-light mt-3" type="submit" id="submit">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

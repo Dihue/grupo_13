@@ -1,0 +1,13 @@
+#container-form{
+	height: auto;
+    background-color: #303535;
+    color: #FFFFFF;
+    border: solid 2px #FFFFFF;
+    border-radius: 5px;
+}
+
+.row {
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-right: 50px;		
+}

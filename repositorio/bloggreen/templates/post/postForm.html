@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'post/css/postForm.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row rounded">
+    <div class="col-12 item mb-5" id="container-form">
+        <form method="post" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+
+            <div class="form-row mt-4">
+                <div class="form-group col-12">
+                    {{ form.title | as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="form-group col-12">
+                    {{ form.thumbnail | as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="form-group col-12">
+                    {{ form.content | as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="form-group col-12">
+                    {{ form.categoria | as_crispy_field }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary btn-lg btn-block mb-4 mt-4" value="CREAR POST">CREAR POST</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
