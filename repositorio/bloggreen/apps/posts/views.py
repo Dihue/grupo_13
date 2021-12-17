@@ -1,5 +1,4 @@
-from django import template
-from django.http.response import Http404, HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls.base import reverse_lazy
@@ -7,7 +6,6 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.db.models import Q
-from django.template import RequestContext
 from apps.posts.forms import PostForm, EditPostForm, CommentForm
 from .models  import Categoria, Post, Comment
 from apps.users.models import NewUser

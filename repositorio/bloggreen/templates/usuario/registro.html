@@ -12,9 +12,9 @@
                 <form class="fw-bold" method="POST" enctype="multipart/form-data">{% csrf_token %}
                     {{ form | crispy }}
                     <br>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <input class="btn btn-danger" type="reset" value="Borrar">
-                        <input class="btn btn-success" type="submit" value="Enviar">
+                    <div class="d-grid gap-4 d-md-flex justify-content-md-end mt-3">
+                        <input class="btn btn-outline-danger" type="reset" value="Borrar">
+                        <input class="btn btn-outline-success" type="submit" value="Enviar">
                     </div>
                     <br>
                 </form>
