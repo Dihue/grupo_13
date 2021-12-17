@@ -78,6 +78,13 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 
         return super().form_valid(form)
 
+class Seguridad(Exception):
+    pass
+
+    def alerta(request):
+        raise Seguridad('No puedes hacer eso!')
+
+
 class PostListView(ListView):
     model = Post
     paginate_by = 5
