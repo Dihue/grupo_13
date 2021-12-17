@@ -17,7 +17,7 @@
             {% if user.image %}
 				<img src="{{ user.image.url }}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
 			{% else %}
-				<img src="{% static 'usuario/imagen/default.jpg' %}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
+				<img src="{% static 'usuario/imagen/avatar.jpg' %}" class="rounded mx-auto d-block img-responsive rounded-circle account-image" id="img_perfil">
 			{% endif %} 
 			<br>
 			<p class="item d-flex justify-content-center"> Nombre de Usuario <p class="d-flex justify-content-center rounded pt-2 pb-2" style="background-color: #404848"> {{user}} </p> </p>
@@ -27,7 +27,7 @@
 		</div>
 		
 		<div class="botonmodificar mt-5 d-flex justify-content-center">
-			<a href="{% url 'users:editar' %}" class="btn btn-outline-light mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL</a>            
+			<a href="{% url 'users:editar' %}" class="btn btn-outline-light mt-5 btn-lg btn-block mb-4" >MODIFICAR PERFIL!</a>            
 		</div>
 	</div>
 	

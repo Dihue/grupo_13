@@ -28,6 +28,11 @@
             <div class="mt-5 mb-3">
                 <div class="row">
                     {% if user.is_authenticated %}
+                        <div class="alert alert-primary">¿Te gustó lo que viste? Dejanos un Like</div>
+                    {% else %}
+                        <div class="alert alert-primary">¿Te gustó lo que viste? Inicia sesión y dejanos un Like</div>
+                    {% endif %}
+                    {% if user.is_authenticated %}
                         <form class="col d-flex justify-content-center" method="post" action="{% url 'posts:likesPost' post.id %}">
                             {% csrf_token %}
                             <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-outline-warning">Me gusta</button>
@@ -107,11 +112,11 @@
                 </div>
             {% endfor %}    
         {% else %}
-            <div class="ps-5 pe-5">
-                <div class="alert alert-danger">
-                    No hay nada acá
-                </div>
-            </div>           
+           {% if user.is_authenticated %}      
+                <div class="alert alert-danger">No hay comentarios aún, ¡sé el primero en comentar!</div> 
+            {% else %}
+                <div class="alert alert-danger">Para ver y poder comentar, tienes que Iniciar Sesión!</div> 
+            {% endif %}          
         {% endif %}
     </div>
 </div>

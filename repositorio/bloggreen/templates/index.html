@@ -110,6 +110,7 @@
         <div class="col-7 pe-5 pt-4" id= "blog_ciudad">
             <div class="pt-5 pe-5" id="blog_ciudad">
                 <div class="card" style="background-color: #303535; color: #FFFFFF;">
+                    <h4 style="text-align: center;">Ultimo post</h4>
                 {% if post %}
                     <div class="">
                         {% if post.thumbnail.url %}
@@ -122,6 +123,9 @@
                         <h4 class="card-title">{{ post.title }}</h4>
                         <hr>
                         <p class="card-text mt-3">{{ post.content }}</p>
+                        <h6 class="card-subtitle">Autor: {{ post.user }} </h6>
+                        <p class="card-text">Categoría: {{ post.categoria.nombre }} </p>
+                        <p class="card-text">Fecha: {{ post.publish_date }}</p>
                     </div>
                     <div class="card-body mt-2 d-flex justify-content-center" style="background-color: #303535; color: #FFFFFF;">
                         <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>

@@ -23,6 +23,7 @@
                                 <h5 clas="card-title">{{ post.title }}</h5>
                                 <h6 class="card-subtitle">Autor: {{ post.user }} </h6>
                                 <p class="card-text">Categoría: {{ post.categoria.nombre }} </p>
+                                <p class="card-text">Fecha: {{ post.publish_date }}</p>
                                 <div class="card-body mt-2 d-flex justify-content-center">
                                     <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>
                                 </div>
