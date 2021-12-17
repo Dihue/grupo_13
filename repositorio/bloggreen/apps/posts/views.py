@@ -15,7 +15,7 @@ from .models  import Post, Comment
 def likeView(request, pk):
     post = get_object_or_404(Post, id = request.POST.get('post_id'))
     liked = False
-    print("hola")
+    print(post)
 
     if post.like.filter(id = request.user.id).exists():
         print("hola2")
@@ -27,7 +27,7 @@ def likeView(request, pk):
         post.like.add(request.user)
         liked = True
 
-    return HttpResponseRedirect(reverse('mostrarPost', args = [str(pk)]))
+    return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(pk)]))
 
 def dislikeView(request, pk):
     post = get_object_or_404(Post, id = request.POST.get('post_id'))
@@ -41,22 +41,22 @@ def dislikeView(request, pk):
         post.dislike.add(request.user)
         disliked = True
 
-    return HttpResponseRedirect(reverse('mostrarPost', args = [str(pk)]))
+    return HttpResponseRedirect(reverse('posts:mostrarPost', args = [str(pk)]))
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'post/postForm.html'
-    success_url = reverse_lazy('mostrarPost')
+    success_url = reverse_lazy('inicio')
     login_url = settings.LOGIN_URL
 
     def formValid(self, form):
-        form.instance.usuario = self.request.user
+        form.instance.user = self.request.user
 
-        if form.instance.thumbnail.name:
+        if form.instance.portada.name:
             ext = form.instance.portada.name.split(".")[-1]
-            form.instance.thumbnail.name = form.instance.title + '.' + ext
+            form.instance.portada.name = form.instance.title + '.' + ext
 
         return super().formValid(form)
 
@@ -75,9 +75,9 @@ class PostEditView(LoginRequiredMixin, UpdateView):
     def formValid(self, form):
         form.instance.usuario = self.request.user
 
-        if form.instance.thumbnail.name:
+        if form.instance.portada.name:
             ext = form.instance.portada.name.split(".")[-1]
-            form.instance.thumbnail.name = form.instance.title + '.' + ext
+            form.instance.portada.name = form.instance.title + '.' + ext
 
         return super().formValid(form)
 
@@ -85,8 +85,8 @@ class PostListView(ListView):
     model = Post
     paginate_by = 5
     ordering = ['-publish_date']
-    #template_name = 'post/postList.html'
-    template_name = 'index.html'
+    template_name = 'post/postList.html'
+    #template_name = 'index.html'
     context_object_name = 'posts'
 
     def latestPost(request):

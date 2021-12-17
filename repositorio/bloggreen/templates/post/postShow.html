@@ -13,17 +13,17 @@
         </div>
         <div class="container mb-4 d-flex justify-content-end">
             {% if user.id == post.user.id %}
-                <form method="post" action="{% url 'deletePost' post.id %}">
+                <form method="post" action="{% url 'posts:deletePost' post.id %}">
                     {% csrf_token %}
-                    <button type="submit" value="Comfirm" class="btn btn-sm">
+                    <button type="submit" value="Comfirm" class="btn btn-outline-danger btn-sm">
                         <b>ELIMINAR</b>
                     </button>
-                    <a href="{% url 'editarPost' post.id %}" class="btn btn-sm">
+                    <a href="{% url 'posts:editarPost' post.id %}" class="btn btn-sm">
                         <b>Editar</b>
                     </a>
                 </form>
             {% elif user.is_superuser %}
-                <form method="post" action="{% url 'deletePost' post.id %}">
+                <form method="post" action="{% url 'posts:deletePost' post.id %}">
                     {% csrf_token %}
                     <button type="submit" value="Comfirm" class="btn btn-outline-danger btn-sm">
                         <b>ELIMINAR</b>
@@ -37,9 +37,12 @@
         <div class="container mb-5" id="post_contenido">
             <div class="mt-1 mb-2">
                 <p>{{ object.content|safe }}</p>
+                {% if object.thumbnail %}
+                    <img src="{{ object.thumbnail.url }}" alt="">
+                {% endif %}
             </div>
             {% if user.is_authenticated %}
-                <form method="post" action="{% url 'likesPost' post.id %}">
+                <form method="post" action="{% url 'posts:likesPost' post.id %}">
                     {% csrf_token %}
                     {% if liked %}
                         <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">Ya no me gusta</button>
@@ -49,7 +52,7 @@
                     <br>
                     <b>{{ total_likes }} LIKES</b>
                 </form>
-                <form method="post" action="{% url 'dislikesPost' post.id %}">
+                <form method="post" action="{% url 'posts:dislikesPost' post.id %}">
                     {% csrf_token %}
                     {% if disliked %}
                         <button type="submit" value="{{ post.id }}" name="post_id" class="btn btn-unlike btn-sm">No me gusta</button>
