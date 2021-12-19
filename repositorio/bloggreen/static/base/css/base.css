@@ -31,3 +31,7 @@ body {
     text-decoration: none;
     color: #ffffff;
 }
+
+#nombreBlog{
+    font-family: 'Montserrat', sans-serif;
+}

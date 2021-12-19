@@ -110,6 +110,7 @@
         <div class="col-7 pe-5 pt-4" id= "blog_ciudad">
             <div class="pt-5 pe-5" id="blog_ciudad">
                 <div class="card" style="background-color: #303535; color: #FFFFFF;">
+                    <h4 style="text-align: center;">Ultimo post</h4>
                 {% if post %}
                     <div class="">
                         {% if post.thumbnail.url %}
@@ -120,9 +121,13 @@
                     </div>
                     <div class="card-body" style="background-color: #303535; color: #FFFFFF;">
                         <h4 class="card-title">{{ post.title }}</h4>
+                        <hr>
                         <p class="card-text mt-3">{{ post.content }}</p>
+                        <h6 class="card-subtitle">Autor: {{ post.user }} </h6>
+                        <p class="card-text">Categoría: {{ post.categoria.nombre }} </p>
+                        <p class="card-text">Fecha: {{ post.publish_date }}</p>
                     </div>
-                    <div class="card-body mt-2" style="background-color: #303535; color: #FFFFFF;">
+                    <div class="card-body mt-2 d-flex justify-content-center" style="background-color: #303535; color: #FFFFFF;">
                         <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>
                     </div>
                 {% else %}
@@ -138,48 +143,39 @@
             </div>
         </div>
 
-        <div class="col-2" style="background: blueviolet;">
-            <div class="">
-                <h1>Menciones:</h1>
-                <br>
-                <br>
+        <div class="col-2" style="background: #303535b6; color: #FFFFFF;">
                 <div class="d-flex justify-content-center">
-                    <img  src="{% static 'base/img/logoinfo.png' %}" alt="">
+                    <h2>Menciones:</h2>
                 </div>
-                <br>
-                <br>
+                <div class="d-flex justify-content-center" >
+                    <img class="mt-4 mb-4" style='width: 60%; object-fit: contain;'  src="{% static 'base/img/logoinfo.png' %}" alt="">
+                </div>
 
                 <div class="d-flex justify-content-center">
-                    <img  src="{% static 'base/img/UltimoLogoDelChaco.jpg' %}" alt="">
+                    <img class="mt-4 mb-4" style='width: 60%; object-fit: contain;' src="{% static 'base/img/UltimoLogoDelChaco.jpg' %}" alt="">
                 </div>
-
-                <br>
-                <br>
 
                 <div class="d-flex justify-content-center">
-                    <img   src="{% static 'base/img/Logo_Polo_It-06.jpg' %}" alt="">
+                    <img class="mt-4 mb-4" style='width: 60%; object-fit: contain;'  src="{% static 'base/img/Logo_Polo_It-06.jpg' %}" alt="">
                 </div>
-                <br>
-                <br>
-
 
                 <div class="d-flex justify-content-center">
-                    <img  src="{% static 'base/img/globant-vector-logo-small.png' %}" alt="">
+                    <img class="mt-4 mb-4" style='width: 60%; object-fit: contain;' src="{% static 'base/img/globant-vector-logo-small.png' %}" alt="">
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div>
-                    <h2 class="d-flex justify-content-center"> <b> Integrantes del grupo 13:</b></h2>
-                    <br>
-                    
-                    <h3> Matias Inglant </h3>
-                    <h3> Dihue<h3>
-                    <h3> Dana Erro</h3>
+
+                <div class="mt-5 mb-3">
+                    <div class="ps-4">
+                        <h3><b> Integrantes del grupo 13:</b></h3>
+                    </div>
+                    <div class="mt-3">
+                        <ul>
+                            <h3>Matias Inglant </h3>
+                            <h3>Dihue De Cuadra<h3>
+                            <h3>Dana Erro</h3>
+                            <h3>Atuel (por ahora)</h3>
+                        </ul>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>      
 {% endblock content %}
