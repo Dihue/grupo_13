@@ -11,22 +11,24 @@
     <div class="row">
         <div class="col-12">
             {% if posts %}
+                <div class="d-flex justify-content-center mt-4" style="background-color: #303535; color: #FFFFFF;">
+                    <h1>{{ posts.0.categoria }}</h1>
+                </div>
                 {% for post in posts %}
                     {% if forloop.first%}
                         <div class="row mt-4">
                     {% endif %}
-
                     <div class="col-4 mb-4">
-                        <div class="card">
+                        <div class="card" style="background-color: #303535; color: #FFFFFF;">
                             {% if post.thumbnail %}
-                                <img class="card-img-top" height="180" src="{{ post.thumbnail.url }}">
+                                <img class="card-img-top" height="280" src="{{ post.thumbnail.url }}">
                             {% else %}
-                                <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" height="180" alt="...">
+                                <img src="{% static 'base/img/ciudad.jpg' %}" class="card-img-top" height="280" alt="...">
                             {% endif %}
-                            <div class="card-body">
+                            <div class="card-body" style="background-color: #303535; color: #FFFFFF;">
                                 <h5 clas="card-title">{{ post.title }}</h5>
                                 <h6 class="card-subtitle">Autor: {{ post.user }} </h6>
-                                <p class="card-text">Categoría: {{ post.categoria.nombre }} </p>
+                                <p class="card-text">Categoría: {{ post.categoria }} </p>
                                 <p class="card-text">Fecha: {{ post.publish_date }}</p>
                                 <div class="card-body mt-2 d-flex justify-content-center">
                                     <a href="{% url 'posts:mostrarPost' post.id %}" class="btn btn-primary">Ir al post</a>

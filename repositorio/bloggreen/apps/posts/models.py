@@ -16,7 +16,7 @@ class Categoria(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    thumbnail = models.ImageField(upload_to='post/', null=True, blank=True, validators=[validar_extension])
+    thumbnail = models.ImageField(upload_to='post/portada', null=True, blank=True, validators=[validar_extension])
     publish_date = models.DateTimeField(auto_now=True)
     last_updated = models.DateTimeField(auto_now_add=True)
     content = models.TextField()

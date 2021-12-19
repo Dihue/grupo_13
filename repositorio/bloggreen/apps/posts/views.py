@@ -1,13 +1,11 @@
-from django import template
-from django.http.response import Http404, HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls.base import reverse_lazy
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.db.models import Q
-from django.template import RequestContext
 from apps.posts.forms import PostForm, EditPostForm, CommentForm
 from .models  import Categoria, Post, Comment
 from apps.users.models import NewUser
@@ -57,7 +55,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
-class PostEditView(LoginRequiredMixin, UpdateView):
+class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = EditPostForm
     template_name = 'post/postEdit.html'
@@ -73,10 +71,10 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 
         return super().form_valid(form)
 
-    def post_edit(request, pk):
-        post = get_object_or_404(Post, pk=pk)
-        if post.user != request.user:
-            raise MsjException('¡No tenes permiso para modificar este post!')
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.user
+            
 
 class MsjException(Exception):
     pass
