@@ -5,8 +5,17 @@ body {
     background-size: cover;
 }
 
+header {
+    height: 163px;
+}
+
+.block_contenido {
+    min-height: calc(100vh - 163px - 175px);
+}
+
 #pie_pagina{
-    flex-shrink: none;
+    height: 175px;
+    width: 100%;
 }
 
 #img-temporal{

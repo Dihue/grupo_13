@@ -11,16 +11,15 @@
     color: #FFFFFF;
     border: solid 2px #FFFFFF;
     border-radius: 5px;
+    height: auto;
+    
 }
 #tituloComentarios {
     color: #FFFFFF;
     
 }
-<<<<<<< HEAD
   
 .btn-like:active {
     background-color: #2CA48E;
 }
 
-=======
->>>>>>> 19fa1a16481a84c18068bbf1e742116eaec4bc77

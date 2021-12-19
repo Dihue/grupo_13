@@ -27,6 +27,9 @@
             </div>
             <div class="mt-5 mb-3">
                 <div class="row">
+                    {% if not user.is_authenticated %}
+                        <div class="alert alert-primary">¿Te gustó lo que viste? Inicia sesión y dejanos un Like</div>
+                    {% endif %}
                     {% if user.is_authenticated %}
                         <form class="col d-flex justify-content-center" method="post" action="{% url 'posts:likesPost' post.id %}">
                             {% csrf_token %}
@@ -68,7 +71,7 @@
                             <b>Editar</b>
                         </a>
                     </div>
-                </div>
+            
                 {% elif user.is_superuser %}
                     <form class="ms-1 me-1" method="post" action="{% url 'posts:deletePost' post.id %}">
                         {% csrf_token %}
@@ -77,27 +80,29 @@
                         </button>
                     </form>
                 {% endif %}
-            </div>
-            <div>
-                {% if object.user.image %}
-                    <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
-                {% else %}
-                    <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
-                {% endif %}
-
-                <div class="d-flex justify-content-center mt-4">
-                    <h4>{{ object.user.username }}</h4>
+                <div>
+                    {% if object.user.image %}
+                        <img class="img-thumbnail rounded mt-4" src="{{ object.user.image.url }}"></img>
+                    {% else %}
+                        <img class="img-thumbnail rounded mt-4" src="{% static 'usuario/img/FotoPerfilDefecto.png' %}"></img>
+                    {% endif %}
+        
+                    <div class="d-flex justify-content-center mt-4">
+                        <h4>{{ object.user.username }}</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container">
     <div class="row mb-5" id="ComentariosContenido">
-        <br/>
-        <h4 id="tituloComentarios">COMENTARIOS:</h4>
-        <hr/>
+        <div class="mt-3 mb-3">
+            <h4 id="tituloComentarios">COMENTARIOS:</h4>
+        </div>
         {% if object.commentsPost.all %}
             {% for p in object.commentsPost.all %}
-                <div class="col-12 mb-4">
+                <div class="col-12 mb-2">
                     <small><strong>{{ p.user.username }} - {{ p.timestamp }}</strong></small>
                     <br/>
                     {{ p.content|linebreaks }}
@@ -105,11 +110,11 @@
                 </div>
             {% endfor %}    
         {% else %}
-            <div class="ps-5 pe-5">
-                <div class="alert alert-danger">
-                    No hay nada acá
-                </div>
-            </div>           
+           {% if user.is_authenticated %}      
+                <div class="alert alert-danger">No hay comentarios aún, ¡sé el primero en comentar!</div> 
+            {% else %}
+                <div class="alert alert-danger">Para ver y poder comentar, tienes que Iniciar Sesión!</div> 
+            {% endif %}          
         {% endif %}
     </div>
 </div>
