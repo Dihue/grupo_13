@@ -1,14 +1,17 @@
+from django.db.models.expressions import OrderBy
 from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls.base import reverse_lazy
 from django.conf import settings
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.db.models import Q
 from apps.posts.forms import PostForm, EditPostForm, CommentForm
 from .models  import Categoria, Post, Comment
 from apps.users.models import NewUser
+from django.db.models import Count
+from django.db.models import F
 
 def like_view(request, pk):
     post = get_object_or_404(Post, id = request.POST.get('post_id'))
@@ -79,11 +82,23 @@ class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class MsjException(Exception):
     pass
 
+
+def like_view(request, pk):
+    post = get_object_or_404(Post, id= request.POST.get('post_id'))
+    liked = False
+
 class PostListView(ListView):
     model = Post
     ordering = ['-publish_date']
     template_name = 'post/postList.html'
     context_object_name = 'posts'
+    
+def post_comentarios(request):
+    opcion = request.GET.get('select')
+    posts = Post.objects.annotate(num_comments=Count('commentsPost')).order_by('-num_comments')
+
+    return render(request,'post/postList.html', {'posts':posts})
+
 class PostShowView(DetailView):
     model = Post
     template_name = 'post/postShow.html'

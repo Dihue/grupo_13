@@ -35,6 +35,13 @@ class Post(models.Model):
     def total_dislikes(self):
         return self.dislike.count()
 
+    @property
+    def comments(self):
+        return self.comment_set.all()
+
+    @property
+    def get_comment_count(self):
+        return self.comment_set.all().count()
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
@@ -46,3 +53,4 @@ class Comment(models.Model):
 
     def __str__(self):
        return '%s - %s - %s - %s' % (self.post.title, self.user, self.id , self.content)
+
